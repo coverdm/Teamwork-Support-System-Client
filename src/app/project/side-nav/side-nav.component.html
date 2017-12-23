@@ -1,0 +1,59 @@
+<app-nav></app-nav>
+<div id="container">
+
+  <div class="row">
+
+    <div class="col">
+
+      <div id="menu" class="z-depth-3">
+
+        <ul id="slide-out" class="side-nav fixed">
+          
+          <li>
+            <a href="#!" [routerLink]="[ 'dashboard' ]" class="tooltipped" data-position="right" data-delay="20" data-tooltip="Dashboard">
+              <i class="material-icons">dashboard</i>
+              <!-- <span class="prefix left">Dashboard</span> -->
+            </a>
+          </li>
+
+          <li>
+              <a href="#!" [routerLink]="[ 'workers' ]" class="tooltipped" data-position="right" data-delay="20" data-tooltip="Workers">
+                <i class="material-icons">people</i>
+                <!-- <span class="prefix left">Dashboard</span> -->
+              </a>
+            </li>
+
+          <li>
+            <a href="#!" [routerLink]="[ 'source-code' ]" class="tooltipped" data-position="right" data-delay="20" data-tooltip="Source code" >
+              <i class="material-icons">code</i>
+              <!-- <span class="prefix left">Source code</span> -->
+            </a>
+          </li>
+
+          <li>
+            <a href="#!" [routerLink]="[ 'announcement' ]" class="tooltipped" data-position="right" data-delay="20" data-tooltip="Annoucements">
+              <i class="material-icons">announcement</i>
+              <!-- <span class="prefix left">Announcement</span> -->
+            </a>
+          </li>
+
+          <li>
+            <a href="#!" [routerLink]="[ 'assignment' ]" class="tooltipped" data-position="right" data-delay="20" data-tooltip="Assignments">
+              <i class="material-icons">assignment</i>
+              <!-- <span class="prefix left">Assignment</span> -->
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col">
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</div>

@@ -1,0 +1,50 @@
+.note{
+    color:grey;
+    font-weight: 300px;
+    font-size: 12px;
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+
+    h2{
+        font-size: 42px;
+        font-weight: 300;
+    }
+
+}
+
+.avatar{
+    float: left;
+    max-width: 200px;
+    max-height: 200px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.loaded_user{
+    margin-top: 40px;
+}
+
+.role p, .skills p{
+    display: block;
+    width: 60px;
+    float: left;
+}
+
+.role, .skills{
+    margin:0;
+    padding:0;
+
+}
+
+.chip{
+    margin-top: 7px;
+}
+
+.name, .email, .role p, .skills p{
+    font-weight: 300;
+}

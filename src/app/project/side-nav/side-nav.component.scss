@@ -1,0 +1,50 @@
+#container {
+    padding-left: 70px;
+}
+  
+#content {
+//   padding: 20px;
+}
+  
+@media only screen and (max-width : 592px) {
+    #container {
+        padding-left: 0px;
+    }
+}
+
+.side-nav{
+    padding-top: 100px;
+    width: 70px;
+    // background: #90a4ae
+}
+
+.side-nav li > a{
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    padding-left: 25px;
+}
+
+.side-nav li a:hover{
+    color: rgba(0, 0, 0, 0.94);
+}
+
+.side-nav li > a > i{
+    font-size: 24px;
+    margin: 0 12px 0 0;
+}
+
+ul li .collapsible-header{
+    text-align: left;
+    padding: 0 32px;
+}
+
+ul li .collapsible-body ul{
+    padding-left: 20px;
+}
+
+ul li .collapsible-body ul li a{
+    font-style: italic;
+    font-size: 10px;
+}

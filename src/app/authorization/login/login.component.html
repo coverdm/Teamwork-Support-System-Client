@@ -1,0 +1,108 @@
+<section id="loginPane">
+
+    <!-- <div class="container"> -->
+
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <h1>Login</h1>
+        </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="login(form.value)" novalidate>
+
+        <div class="row">
+
+            <div class="input-field col s10 m10 l10" style="margin: 20px">
+                <i class="large material-icons prefix">account_box</i>
+                <input style="margin-bottom: 0" required type="email" formControlName="email" name="email" id="email">
+                <label class="active" for="email">Email</label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="input-field col s10 m10 l10" style="margin: 20px">
+                <i class="medium material-icons prefix">lock</i>
+                <input required type="password" formControlName="password" name="password" id="password">
+                <label class="active" for="password">Password</label>
+            </div>
+        </div>
+        <!-- Modal trigger -->
+
+        <div class="row">
+
+            <div class="col s6 m6 l6">
+
+                <button [routerLink]="['/register']" class="btn waves-effect waves-light left">Register
+                    <i class="material-icons right">exit_to_app</i>
+                </button>
+
+            </div>
+
+            <div class="col s6 m6 l6">
+
+                <button (click)="openModal()" [disabled]="!form.valid" class="btn waves-effect waves-light right" type="submit" name="action">Login
+                    <i class="material-icons right">vpn_key</i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</section>
+
+<!-- Modal Structure -->
+
+<div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+    <div class="modal-content">
+
+        <div *ngIf="preloader">
+
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+
+        </div>
+
+        <div *ngIf="!preloader">
+
+            <div *ngIf="!problemWithLogin">
+
+                <div>
+                    <i class="material-icons prefix medium">verified_user</i>
+                    <p id="success-info">Authentication successfully</p>
+                </div>
+
+            </div>
+
+            <div *ngIf="problemWithLogin">
+
+                <div>
+                    <i class="sign-add-args material-icons prefix medium">thumb_down</i>
+                    <p id="fail-info">Email or password invalid</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div *ngIf="!preloader">
+
+        <!-- Default button shows when everything is ok -->
+        <div *ngIf="!problemWithLogin" class="modal-footer">
+            <button [routerLink]="[ '/projects']" (click)="closeModal()" class="btn continue-button">Continue</button>
+        </div>
+
+        <!-- Shows button when account already exists -->
+        <div *ngIf="problemWithLogin" class="modal-footer">
+            <button [routerLink]="[ '/login' ]" style="background-color: #f4511e" (click)="closeModal()" class="btn continue-button">Try again</button>
+        </div>
+
+    </div>
+
+</div>

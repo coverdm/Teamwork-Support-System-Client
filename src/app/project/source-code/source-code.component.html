@@ -1,0 +1,68 @@
+<section class="source-code">
+
+    <h1>Source code</h1>
+
+    <div class="container">
+
+        <div class="repository" *ngFor="let sourceCode of sourceCodeList">
+            <img class="responsive-img" src="{{performIdentifyRepository(sourceCode.link).imgLink}}" alt="github" />
+            <input type="text" disabled value="{{sourceCode.link}}">
+            <button class="btn" onclick="Materialize.toast('Copied', 2000)">Copy
+                <i class="material-icons right">content_copy</i>
+            </button>
+            <button class="btn">Modify
+                <i class="material-icons right">mode_edit</i>
+            </button>
+        </div>
+
+        <div class="add-new-repository">
+
+            <h2>Add new repository</h2>
+
+            <a (click)="openModal()" class="btn-floating btn-large waves-effect waves-light">
+                <i class="material-icons">add</i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+
+    <div class="modal-content">
+
+        <form [formGroup]="newRepositoryForm" (ngSubmit)="saveNewRepositoryLink(newRepositoryForm.value)">
+
+        <div class="row">
+
+            <div class="col s12 m12 l12">
+
+                <h1 id="modal-header">Add new repository</h1>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s12 m12 l12">
+
+                <input type="text" formControlName="newLinkHolder">
+                <label>Type link to repository</label>
+            </div>
+
+        </div>
+
+        <img class="newRepositoryImg" src="{{identifyResult.imgLink}}" alt="{{identifyResult.canonicalName}}">
+
+        <div class="row">
+            <button (click)="closeModal()" type="submit" class="btn" style="margin-top: 20px">Confirm</button>
+            <button (click)="closeModal()" class="btn" style="margin-top: 20px">Cancel</button>
+        </div>
+    </form>
+    </div>
+
+</div>

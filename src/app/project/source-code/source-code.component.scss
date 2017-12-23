@@ -1,0 +1,62 @@
+@media only screen and (min-width: 993px){
+    .container{
+        width: 80%;
+    }
+}
+
+.source-code .repository{
+    margin-top: 60px;
+}
+
+.source-code .repository img{
+    width: 200px;
+}
+
+.source-code h1{
+    margin: 0 auto 40px auto;
+    padding: 3px;
+    font-size: 34px;
+    text-align: center;
+    background: #26a69a;
+    color: #fff;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+.source-code .container .add-new-repository{    
+    margin: 100px auto 0 auto;
+    max-width: 350px;
+}
+
+.source-code .container .add-new-repository h2{
+    margin: 0;
+    padding: 10px;
+    font-weight: 300;
+    font-size: 32px;
+    float: left;
+}
+
+.source-code .container .add-new-repository a{
+    float: right;
+}
+
+#modal-header{
+    margin: 0 auto 40px auto;
+    padding: 3px;
+    font-size: 34px;
+    text-align: center;
+    background: #26a69a;
+    color: #fff;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.newRepositoryImg{
+    width: 200px;
+    float: left;
+}
+
+button{
+    float:right;
+    margin-left: 10px;
+}

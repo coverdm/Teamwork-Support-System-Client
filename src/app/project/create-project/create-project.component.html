@@ -1,0 +1,79 @@
+<section id="registerPane" class="container">
+
+    <div style="background-color: #26a69a">
+        <h1 style="font-weight: 300; font-size: 40px; color: white; padding: 10px; margin-bottom: 50px;">CREATE NEW PROJECT</h1>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="createProject(form.value)" novalidate>
+
+        <div class="input-field col s6" style="margin: 20px 0">
+            <input class="validate" type="text" name="name" id="name" formControlName="name">
+            <label data-error="wrong" data-success="right" class="active" for="name">Name</label>
+        </div>
+
+        <div class="input-field col s6" style="margin: 20px 0">
+            <textarea class="materialize-textarea validate" name="description" id="description" formControlName="description"></textarea>
+            <label data-error="wrong" data-success="right" class="active" for="description">Description</label>
+        </div>  
+
+        <!-- Modal trigger -->
+        <button [disabled]="!form.valid" (click)="openModal()" class="btn waves-effect waves-light" type="submit" name="action">Create
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+
+    <p>
+        <a [routerLink]="[ '/login' ]">Back</a>
+    </p>
+
+    <!-- Modal Structure -->
+
+    <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+        <div class="modal-content">
+
+            <div *ngIf="preloader">
+
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+
+            </div>
+
+            <div *ngIf="!preloader">
+
+                <div *ngIf="!problems">
+
+                    <div>
+                        <i class="sign-add-args material-icons prefix medium">verified_user</i>
+                        <p id="success-info">Project created successfully</p>
+                    </div>
+
+                </div>
+
+                <div *ngIf="problems">
+
+                    <div>
+                        <i class="sign-add-args material-icons prefix medium">thumb_down</i>
+                        <p id="fail-info">Cannot create new project.
+                            <br>Try again</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div *ngIf="!preloader">
+
+            <!-- Default button shows when everything is ok -->
+            <div *ngIf="!problem" class="modal-footer">
+                <button [routerLink]="[ '/project' ]" (click)="closeModal()" class="btn continue-button">Continue</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

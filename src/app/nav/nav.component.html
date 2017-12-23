@@ -1,0 +1,100 @@
+<nav>
+  <div class="nav-wrapper">
+    <!-- <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a> -->
+    <ul class="right">
+
+      <li>
+        <a class="dropdown-button" data-activates="dropdown-notifications">
+          <i class="material-icons">notifications_active</i>
+        </a>
+      </li>
+
+      <li>
+        <a class="left">
+          <!-- <i class="material-icons left">account_circle</i> -->
+          <!-- <img class="avatar circle" src="../../assets/avatar.png" alt="avatar"> -->
+          <div class="avatar circle left"></div>
+          Dawid Matuszak
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-button" data-activates="dropdown1">
+          <i class="material-icons">more_vert</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ul id="dropdown1" class="dropdown-content">
+  <!-- <li><a href="#!"><i class="material-icons left">forum</i>forum</a></li>  -->
+  <li>
+    <a href="#!">
+      <i class="material-icons left">message</i>messages</a>
+  </li>
+  <!-- <li><a href="#!"><i class="material-icons left">monetization_on</i>monetization_on</a></li> -->
+  <li>
+    <a href="#!">
+      <i class="material-icons left">notifications</i>notifications</a>
+  </li>
+  <li class="divider"></li>
+  <li>
+    <a [routerLink]="[ '../login' ]">
+      <i class="material-icons left">directions_run</i>logout</a>
+  </li>
+</ul>
+
+<ul id="dropdown-notifications" class="dropdown-content ">
+
+    <li class="notifications-item">
+
+        <!-- <h2 class="notification-item-header">Task problem</h2> -->
+        <div>
+          <i class="material-icons left">new_releases</i>
+          <p class="notification-item-text left"><span>dawid_matuszak@outlook.com</span><br>alerts problem with task</p>
+        </div>
+    
+      </li>
+
+      <li class="divider"></li>
+
+      <li class="notifications-item">
+
+          <!-- <h2 class="notification-item-header">Task problem</h2> -->
+          <div>
+            <i class="material-icons left">date_range</i>
+            <p class="notification-item-text left"><span>Meeting at 3.45 PM</span><br>Show callendar</p>
+          </div>
+      
+        </li>
+
+        <li class="divider"></li>
+
+        <li class="notifications-item">
+
+            <!-- <h2 class="notification-item-header">Task problem</h2> -->
+            <div>
+              <i class="material-icons left">person_add</i>
+              <p class="notification-item-text left"><span>mateusz_stanek@gmail.com</span><br>joined to team</p>
+            </div>
+        
+          </li>
+
+          <li class="divider"></li>
+
+          <li class="notifications-item">
+
+              <!-- <h2 class="notification-item-header">Task problem</h2> -->
+              <div>
+                <i class="material-icons left">new_releases</i>
+                <p class="notification-item-text left"><span>dawid_matuszak@outlook.com</span><br>alerts problem with task</p>
+              </div>
+          
+            </li>
+
+  <li class="divider"></li>
+  <li class="more">
+    <a [routerLink]="[ '../login' ]">show more</a>
+  </li>
+
+</ul>

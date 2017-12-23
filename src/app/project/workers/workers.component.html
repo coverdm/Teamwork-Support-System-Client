@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h2>Workers</h2>
+
+  <ul class="collection">
+      <li class="collection-item avatar" *ngFor="let worker of workers">
+        
+          <div class="worker-main">
+
+              <img src="{{worker.$avatar_url}}" alt="" class="circle" style="object-fit: cover;">
+              <span class="title">{{worker.$project_role}}</span>
+              <p class="worker-name">{{worker.$firstName + ' ' + worker.$lastName}}</p>    
+
+          </div>
+
+          <div class="workers-options">
+
+              <a href="#!" class="">
+                  <i class="material-icons blue-grey-text darken-4">info</i>
+                </a>
+                <a href="#!" class="">
+                    <i class="material-icons blue-grey-text darken-4">insert_comment</i>
+                </a>
+
+          </div>
+        
+        </li>
+  </ul>
+
+  <div class="add-new-worker">
+
+    <button class="btn right"><i [routerLink]="['../add-worker']" class="material-icons add-person">person_add</i></button>
+
+  </div>
+
+</div>

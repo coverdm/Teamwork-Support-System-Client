@@ -1,0 +1,29 @@
+#project-list-section{
+    margin:0 auto;
+    max-width: 500px;
+}
+
+h2{
+    font-weight: 300;
+    text-align: center;
+}
+
+.collection-item{
+    height:40px;
+    padding-bottom:30px;
+}
+
+.additional_args{
+    float: right;
+    position: relative;
+    top: -2px;
+}
+
+.image-project{
+    position: relative;
+    top: -3px;
+}
+
+span{
+    font-weight: 500
+}

@@ -1,0 +1,88 @@
+#loginPane{
+    max-width: 450px;
+    margin: 100px auto 30px auto;
+    background: white;
+    border-radius: 5px;
+}
+
+.active{
+    color: #37474f;
+}
+
+.col {
+    padding: 0;
+    margin: 0;
+}
+
+.row{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    margin: 0 auto;
+    padding: 3px;
+    font-size: 34px;
+    text-align: center;
+    background: #263238;
+    color: #fff;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+button{
+    // float: right;
+    background: #263238;
+    // margin: 0 10px 10px 10px;
+}
+
+
+.incorrect_validation{
+    float: right;
+    color: #e53935;
+    font-weight: 300;
+    font-size: 12px;
+    padding:0;
+    margin:0;
+}
+.modal{
+    max-width: 440px;
+    max-height: 200px;
+    height: 156px;
+}
+
+.sign-add-args{
+    color: #bf360c;
+    float:left;
+    margin: 20px;
+}
+
+#success-info{
+    float: right;
+    font-size: 24px;
+    // margin-top: 10px;
+    color: #26a69a;
+}
+
+#fail-info{
+    float: left;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #bf360c;
+}
+
+.continue-button{
+    position: relative;
+    right: 30px;
+    margin:0 20px;
+    padding-right: 50px;
+}
+
+.btn{
+    margin: 0 10px 10px 10px;
+}
+
+.btn:hover{
+    background: #37474f;
+}

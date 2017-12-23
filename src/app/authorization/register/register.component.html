@@ -1,0 +1,108 @@
+<section id="registerPane">
+
+    <h1>Register</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
+
+        <div class="input-field col s6" style="margin: 20px">
+
+            <i class="large material-icons prefix">account_box</i>
+            <input style="margin-bottom: 0;" type="email" name="email" id="email" formControlName="email">
+            <label class="active" for="email">Email</label>
+
+            <div class="incorrect_validation" *ngIf="!form.controls['email'].valid && form.controls['email'].touched"> Invalid email format</div>
+            <div class="incorrect_validation" *ngIf="isAccountExists"> Account already exists</div>
+
+        </div>
+
+        <div class="input-field col s6" style="margin: 20px">
+
+            <i class="medium material-icons prefix">lock</i>
+            <input style="margin-bottom: 0" type="password" name="password" id="password" formControlName="password">
+            <label class="active" for="password">Password</label>
+
+            <div class="incorrect_validation" *ngIf="!form.controls['password'].valid && form.controls['password'].touched">
+                Password needs to have [A-Z][a-z][1-9]
+            </div>
+
+        </div>
+
+        <div class="input-field col s6" style="margin: 20px">
+
+            <i class="medium material-icons prefix">lock</i>
+            <input style="margin-bottom: 0" type="password" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword">
+            <label class="active" for="confirmPassword">Repeat password</label>
+
+            <div *ngIf="form.controls['confirmPassword'].touched && !form.controls['confirmPassword'].valid">
+                <div class="incorrect_validation" *ngIf="form.hasError('mismatchedPasswords')">
+                    Password does not matched
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal trigger -->
+        <button [disabled]="!form.valid" (click)="openModal()" class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+
+    <p>
+        <a [routerLink]="[ '/login' ]">Back to login</a>
+    </p>
+
+    <!-- Modal Structure -->
+
+    <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+        <div class="modal-content">
+
+            <div *ngIf="preloader">
+
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+
+            </div>
+
+            <div *ngIf="!preloader">
+
+                <div *ngIf="!accountAlreadyExist">
+
+                    <div>
+                        <i class="sign-add-args material-icons prefix medium">verified_user</i>
+                        <p id="success-info">Registered successfully</p>
+                    </div>
+
+                </div>
+
+                <div *ngIf="accountAlreadyExist">
+
+                    <div>
+                        <i class="sign-add-args material-icons prefix medium">thumb_down</i>
+                        <p id="fail-info">Account already exists</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div *ngIf="!preloader">
+
+            <!-- Default button shows when everything is ok -->
+            <div *ngIf="!accountAlreadyExist" class="modal-footer">
+                <button (click)="closeModal()" class="btn continue-button">Continue</button>
+            </div>
+
+            <!-- Shows button when account already exists -->
+            <div *ngIf="accountAlreadyExist" class="modal-footer">
+                <button style="background-color: #f4511e" (click)="closeModal()" class="btn continue-button">Try again</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
