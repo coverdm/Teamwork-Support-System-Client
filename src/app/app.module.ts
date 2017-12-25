@@ -28,6 +28,9 @@ import { WorkersComponent } from './project/workers/workers.component';
 import { AddNewWorkerComponent } from './project/workers/add-new-worker/add-new-worker.component';
 import { WorkersFinderService } from '@services/workers-finder.service';
 import { WorkerService } from '@services/worker.service';
+import { ProfileCreatorComponent } from './profile/profile-creator/profile-creator.component';
+import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
+import { ProfileService } from '@services/profile.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,9 @@ import { WorkerService } from '@services/worker.service';
     AssignmentCardViewComponent,
     AssignmentInfoComponent,
     WorkersComponent,
-    AddNewWorkerComponent
+    AddNewWorkerComponent,
+    ProfileCreatorComponent,
+    ProfileViewComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,7 @@ import { WorkerService } from '@services/worker.service';
     HttpModule,
     MaterializeModule
   ],
-  providers: [AuthService, ProjectService, RepositoryParserService, WorkersFinderService, WorkerService],
+  providers: [AuthService, ProjectService, RepositoryParserService, WorkersFinderService, WorkerService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

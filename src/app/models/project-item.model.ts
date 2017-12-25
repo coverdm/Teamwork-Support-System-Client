@@ -1,9 +1,9 @@
 export class ProjectItem {
 
-    projectId: string;
+    projectId: ProjectId;
     projectProperties: ProjectProperties;
 
-    constructor(projectId: string, projectProperties: ProjectProperties) {
+    constructor(projectId: ProjectId, projectProperties: ProjectProperties) {
         this.projectId = projectId;
         this.projectProperties = projectProperties;
     }
@@ -17,4 +17,8 @@ export class ProjectProperties {
         this.name = name;
         this.description = description;
     }
+}
+
+export class ProjectId {
+    uuid: string;
 }

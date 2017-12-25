@@ -5,9 +5,9 @@
 
   <div class="collection">
 
-    <div *ngFor="let item of projectItems">
+    <div *ngFor="let item of projectItems; let i=index">
 
-      <a [routerLink]="[ '/project' ]" class="collection-item">
+      <a (click)="project(i)" [routerLink]="['/project']" class="collection-item">
         <span>{{item.projectProperties.name}}</span>
         <div class="additional_args">
 

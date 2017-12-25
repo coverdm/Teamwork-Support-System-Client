@@ -5,7 +5,8 @@
 
       <li>
         <a class="dropdown-button" data-activates="dropdown-notifications">
-          <i class="material-icons">notifications_active</i>
+          <i *ngIf="notifications.length > 0" class="material-icons">notifications_active</i>
+          <i *ngIf="notifications.length === 0" class="material-icons">notifications_none</i>
         </a>
       </li>
 
@@ -46,55 +47,20 @@
 
 <ul id="dropdown-notifications" class="dropdown-content ">
 
-    <li class="notifications-item">
+    <li class="notifications-item" *ngFor="let notification of notifications">
 
-        <!-- <h2 class="notification-item-header">Task problem</h2> -->
         <div>
-          <i class="material-icons left">new_releases</i>
-          <p class="notification-item-text left"><span>dawid_matuszak@outlook.com</span><br>alerts problem with task</p>
+          <i *ngIf="notification.type === 'task_problem'" class="material-icons left">new_releases</i>
+          <i *ngIf="notification.type === 'meeting'" class="material-icons left">date_range</i>
+          <i *ngIf="notification.type === 'new_user'" class="material-icons left">person_add</i>
+
+          <p class="notification-item-text left">{{notification.text}}</p>
         </div>
-    
       </li>
 
-      <li class="divider"></li>
-
-      <li class="notifications-item">
-
-          <!-- <h2 class="notification-item-header">Task problem</h2> -->
-          <div>
-            <i class="material-icons left">date_range</i>
-            <p class="notification-item-text left"><span>Meeting at 3.45 PM</span><br>Show callendar</p>
-          </div>
-      
-        </li>
-
-        <li class="divider"></li>
-
-        <li class="notifications-item">
-
-            <!-- <h2 class="notification-item-header">Task problem</h2> -->
-            <div>
-              <i class="material-icons left">person_add</i>
-              <p class="notification-item-text left"><span>mateusz_stanek@gmail.com</span><br>joined to team</p>
-            </div>
-        
-          </li>
-
-          <li class="divider"></li>
-
-          <li class="notifications-item">
-
-              <!-- <h2 class="notification-item-header">Task problem</h2> -->
-              <div>
-                <i class="material-icons left">new_releases</i>
-                <p class="notification-item-text left"><span>dawid_matuszak@outlook.com</span><br>alerts problem with task</p>
-              </div>
-          
-            </li>
-
-  <li class="divider"></li>
   <li class="more">
-    <a [routerLink]="[ '../login' ]">show more</a>
+    <a [routerLink]="[ '../login' ]" class="right">Show more</a>
+    <a (click)="clear()" class="left">Clear notifications</a>
   </li>
 
 </ul>

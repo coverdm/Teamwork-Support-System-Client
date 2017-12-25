@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProjectService} from '@services/project-list-provider.service';
 import {ProjectItem, ProjectProperties} from '@models/project-item.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -12,7 +13,7 @@ export class ProjectListComponent implements OnInit {
 
   projectItems: ProjectItem[] = [];
 
-  constructor(private plp: ProjectService) {
+  constructor(private plp: ProjectService, private router: Router) {
     this.plp.getProjectList().subscribe(res => this.projectItems = res);
 
     console.log(this.projectItems);
@@ -25,4 +26,7 @@ export class ProjectListComponent implements OnInit {
     return this.projectItems.length === 0;
   }
 
+  project(index) {
+    localStorage.setItem('uuid', this.projectItems[index].projectId.uuid);
+  }
 }
