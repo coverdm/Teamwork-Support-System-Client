@@ -1,3 +1,66 @@
-<p>
-  profile-creator works!
-</p>
+<div class="container">
+
+  <h2>#Profile</h2>
+
+  <form [formGroup]="profileForm">
+
+    <div class="row">
+
+    <div class="input-field col l6 m6 s12" formGroupName="name">
+      <i class="material-icons prefix">account_circle</i>
+      <input id="firstName" type="text" class="firstname" formControlName="firstName">
+      <label for="firstName">First Name</label>
+    </div>
+
+    <div class="input-field col l6 m6 s12" formGroupName="name">
+      <i class="material-icons prefix">account_circle</i>
+      <input id="lastName" type="text" class="firstname" formControlName="lastName">
+      <label for="lastName">Last Name</label>
+    </div>
+
+  </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">computer</i>
+      <input id="skype" type="text" class="skype" formControlName="skype">
+      <label for="skype">Skype account</label>
+    </div>
+
+    <div class="input-field col s12">
+      <i class="material-icons prefix">flash_on</i>
+      <input formControlName="skills" materialize="autocomplete" [materializeParams]="[{'data': temp}]" type="text" id="autocomplete-input" class="autocomplete" (keyup.enter)="addSkill(profileForm.value.skills)" >
+      <label for="autocomplete-input">Skill</label>
+    </div>
+
+    <div>
+      <span class="skills-list-header">Skills: </span>
+      <div class="chip" *ngFor="let skill of skills; let i=index">
+        {{skill.name}} <span (click)="removeSkill(i)">x</span>
+      </div>
+    </div>
+    
+    <div class="input-field col s12">
+      <i class="material-icons prefix">flag</i>
+      <input formControlName="nationality" materialize="autocomplete" [materializeParams]="[{'data': temp}]" type="text" id="autocomplete-input" class="autocomplete">
+      <label for="autocomplete-input">Nationality</label>
+    </div>
+    
+    <br/>
+    
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Avatar</span>
+        <input (change)="loadFile($event)" type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" formControlName="avatar">
+      </div>
+    </div>
+
+
+    <button hidden></button>
+    <button [routerLink]="['/projects']" [disabled]="!profileForm.valid" class="btn right margin" (click)="saveProfile(profileForm.value)">Submit</button>
+
+  </form>
+
+</div>

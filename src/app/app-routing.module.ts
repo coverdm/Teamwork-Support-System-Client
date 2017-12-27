@@ -11,12 +11,17 @@ import { AssignmentCardViewComponent } from './project/assignment/assignment-car
 import { AssignmentListViewComponent } from './project/assignment/assignment-list-view/assignment-list-view.component';
 import { WorkersComponent } from './project/workers/workers.component';
 import { AddNewWorkerComponent } from './project/workers/add-new-worker/add-new-worker.component';
+import { ProfileCreatorComponent } from './profile/profile-creator/profile-creator.component';
+import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'projects', component: ProjectListComponent },
   { path: 'create-project', component: CreateProjectComponent },
+  { path: 'profile', component: ProfileViewComponent },
+  { path: 'create-profile', component: ProfileCreatorComponent },
   { path: 'project', component: SideNavComponent,
     children: [
       { path: 'assignment', component: AssignmentComponent,
