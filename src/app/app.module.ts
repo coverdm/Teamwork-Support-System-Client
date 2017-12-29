@@ -31,6 +31,7 @@ import { WorkerService } from '@services/worker.service';
 import { ProfileCreatorComponent } from './profile/profile-creator/profile-creator.component';
 import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 import { ProfileService } from '@services/profile.service';
+import { CreateNewAssignmentComponent } from './project/assignment/create-new-assignment/create-new-assignment.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ProfileService } from '@services/profile.service';
     WorkersComponent,
     AddNewWorkerComponent,
     ProfileCreatorComponent,
-    ProfileViewComponent
+    ProfileViewComponent,
+    CreateNewAssignmentComponent
   ],
   imports: [
     BrowserModule,

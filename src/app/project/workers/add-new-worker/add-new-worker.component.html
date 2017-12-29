@@ -11,25 +11,25 @@
 
   </form>
 
-  <div class="row loaded_user" *ngIf="loadedWorker">
+  <div class="row loaded_user" *ngIf="loadedProfile">
 
-    <div class="col s12 m4 l3">
+    <div class="col s12 m4 l4">
 
-      <img class="avatar circle z-depth-2" src="{{loadedWorker.$avatar_url}}" alt="avatar" />
+      <img class="avatar circle z-depth-2" src="{{loadedProfile.avatar.data}}" alt="avatar" />
 
     </div>
 
-    <div class="col s12 m8 l9">
+    <div class="col s12 m8 l8">
 
-      <p class="name">Name: {{loadedWorker.$firstName + ' ' + loadedWorker.$lastName}}</p>
-      <p class="email">Email: {{loadedWorker.$email}}</p>
+      <p class="name">Name: {{loadedProfile.name.fullName}}</p>
+      <p class="email">Email: {{loadedProfile.profileId.id}}</p>
 
       <div class="role">
 
         <p>Role:</p>
 
-        <div class="chip" *ngFor="let position of loadedWorker.$preffered_roles">
-          {{position}}
+        <div class="chip" *ngFor="let position of loadedProfile.prefferedRoles">
+          {{position.role}}
         </div>
 
       </div>
@@ -40,12 +40,11 @@
 
         <p>Skills:</p>
 
-        <div class="chip" *ngFor="let skill of loadedWorker.$skills">
-          {{skill}}
+        <div class="chip" *ngFor="let skill of loadedProfile.skills">
+          {{skill.name}}
         </div>
 
       </div>
-
     </div>
 
   </div>

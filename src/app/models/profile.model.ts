@@ -1,17 +1,29 @@
 export class Profile {
 
+    profileId: string;
     name: Name;
     avatar: Avatar;
     skills: Array<Skill>;
     contact: Contact;
     nationality: Nationality;
+    prefferedRoles: Array<PrefferedRole>;
 
-    constructor(name: Name, avatar: Avatar, skills: Array<Skill>, contact: Contact, nationality: Nationality) {
+    constructor(prefferedRoles: Array<PrefferedRole>, name: Name, avatar: Avatar,
+        skills: Array<Skill>, contact: Contact, nationality: Nationality, profileId: string) {
         this.name = name;
         this.avatar = avatar;
         this.skills = skills;
         this.contact = contact;
         this.nationality = nationality;
+        this.profileId = profileId;
+        this.prefferedRoles = prefferedRoles;
+    }
+}
+
+export class PrefferedRole {
+    role: string;
+    constructor(role: string) {
+        this.role = role;
     }
 }
 

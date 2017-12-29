@@ -15,7 +15,7 @@
           <!-- <i class="material-icons left">account_circle</i> -->
           <!-- <img class="avatar circle" src="../../assets/avatar.png" alt="avatar"> -->
           <div class="avatar circle left"></div>
-          Dawid Matuszak
+          <span *ngIf="profile">{{profile.name.firstName}} {{profile.name.lastName}}</span>
         </a>
       </li>
       <li>
@@ -64,3 +64,5 @@
   </li>
 
 </ul>
+
+<router-outlet></router-outlet>

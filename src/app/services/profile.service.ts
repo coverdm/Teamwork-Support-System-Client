@@ -16,9 +16,17 @@ export class ProfileService {
   DELETE_PROFILE_URL = this.API_PROFILE + '/delete';
   GET_PROFILE_URL = this.API_PROFILE;
 
-  userId = 'dawid_matuszak@outlook.com';
-
   constructor(private http: Http) { }
+
+  find(profileId: string): Observable<Profile> {
+
+    const headers = new Headers({ 'Content-Type': 'application/json'});
+    headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.GET_PROFILE_URL + '?profileId=' + profileId, options)
+      .map((response: Response) => <Profile> response.json());
+  }
 
   getProfile(): Observable<Profile> {
 
@@ -27,7 +35,7 @@ export class ProfileService {
 
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.get(this.GET_PROFILE_URL + '?profileId=' + this.userId, options)
+    return this.http.get(this.GET_PROFILE_URL + '?profileId=' + localStorage.getItem('userId'), options)
       .map((res: Response) => <Profile> res.json());
   }
 
@@ -39,9 +47,8 @@ export class ProfileService {
     headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
 
     const options = new RequestOptions({ headers: headers });
-    // localStorage.getItem('userId')
-
-    return this.http.post(this.ADD_PROFILE_URL + '?profileId=' + this.userId, body, options)
+  
+    return this.http.post(this.ADD_PROFILE_URL + '?profileId=' + localStorage.getItem('userId'), body, options)
       .map((response: Response) => <Profile> response.json());
   }
 }

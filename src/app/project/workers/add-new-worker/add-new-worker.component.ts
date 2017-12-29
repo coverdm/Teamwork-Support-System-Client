@@ -2,24 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WorkersFinderService } from '@services/workers-finder.service';
 import { WorkerService } from '@services/worker.service';
-import { Worker } from '@models/worker.model';
+import { Profile } from '@models/profile.model';
+import { ProfileService } from '@services/profile.service';
 
 @Component({
   selector: 'app-add-new-worker',
   templateUrl: './add-new-worker.component.html',
-  styleUrls: ['./add-new-worker.component.scss']
+  styleUrls: ['./add-new-worker.component.scss'],
+  providers: [ProfileService, WorkerService]
 })
 export class AddNewWorkerComponent implements OnInit {
 
   newWorkerForm: FormGroup;
   showLoadedWorker: boolean;
-  loadedWorker: Worker;
+  loadedProfile: Profile;
 
   constructor(private formBuilder: FormBuilder,
               private workersFinderService: WorkersFinderService,
-              private workerService: WorkerService) { }
+              private workerService: WorkerService,
+              private profileService: ProfileService) { }
 
   ngOnInit() {
+
     this.newWorkerForm = this.formBuilder.group({
       email: ['', Validators.required]
     });
@@ -29,12 +33,16 @@ export class AddNewWorkerComponent implements OnInit {
   onChange() {
     this.newWorkerForm.valueChanges.subscribe(val => {
       if (val.email.length > 5)  {
-        this.loadedWorker = this.workersFinderService.find(val.email);
+        this.profileService.find(val.email).subscribe(profile => {
+          console.log(profile);
+          this.loadedProfile = profile;
+          console.log(this.loadedProfile);
+        }, error => {});
       }
     });
   }
 
   public sendRequestToJoin(workers_email): void {
-    this.workerService.sendRequestToJoin(workers_email);
+    this.workerService.addUserToProject(workers_email);
   }
 }

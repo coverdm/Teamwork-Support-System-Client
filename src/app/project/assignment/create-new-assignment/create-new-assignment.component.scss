@@ -1,0 +1,25 @@
+.container{
+    h2{
+        font-size: 32px;
+        font-weight: 200;
+        margin-bottom: 50px;
+    }
+
+    form {
+
+        .selected-workers{
+
+            &{
+                margin-top: 20px;
+            }
+            .selected-workers-header{
+
+                padding: 20px;
+                margin-top: 20px; 
+    
+            }
+
+        }
+
+    }
+}

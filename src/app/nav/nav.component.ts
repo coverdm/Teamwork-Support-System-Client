@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.notifications = this.notificationsService.notifications;
-    this.profileService.getProfile().subscribe(res => this.profile = res, error => this.router.navigate(['/create-profile']));
+    this.profileService.getProfile().subscribe(res => this.profile = res, error => this.router.navigate(['create-profile']));
   }
 
   clear() {

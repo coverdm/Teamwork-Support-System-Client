@@ -6,19 +6,19 @@
 
     <div class="row">
 
-    <div class="input-field col l6 m6 s12" formGroupName="name">
-      <i class="material-icons prefix">account_circle</i>
-      <input id="firstName" type="text" class="firstname" formControlName="firstName">
-      <label for="firstName">First Name</label>
-    </div>
+      <div class="input-field col l6 m6 s12" formGroupName="name">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="firstName" type="text" class="firstname" formControlName="firstName">
+        <label for="firstName">First Name</label>
+      </div>
 
-    <div class="input-field col l6 m6 s12" formGroupName="name">
-      <i class="material-icons prefix">account_circle</i>
-      <input id="lastName" type="text" class="firstname" formControlName="lastName">
-      <label for="lastName">Last Name</label>
-    </div>
+      <div class="input-field col l6 m6 s12" formGroupName="name">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="lastName" type="text" class="firstname" formControlName="lastName">
+        <label for="lastName">Last Name</label>
+      </div>
 
-  </div>
+    </div>
 
     <div class="input-field">
       <i class="material-icons prefix">computer</i>
@@ -28,25 +28,43 @@
 
     <div class="input-field col s12">
       <i class="material-icons prefix">flash_on</i>
-      <input formControlName="skills" materialize="autocomplete" [materializeParams]="[{'data': temp}]" type="text" id="autocomplete-input" class="autocomplete" (keyup.enter)="addSkill(profileForm.value.skills)" >
+      <input formControlName="skills" materialize="autocomplete" [materializeParams]="[{'data': temp}]" type="text" id="autocomplete-input"
+        class="autocomplete" (keyup.enter)="addSkill(profileForm.value.skills)">
       <label for="autocomplete-input">Skill</label>
     </div>
 
     <div>
       <span class="skills-list-header">Skills: </span>
       <div class="chip" *ngFor="let skill of skills; let i=index">
-        {{skill.name}} <span (click)="removeSkill(i)">x</span>
+        {{skill.name}}
+        <span (click)="removeSkill(i)">x</span>
       </div>
     </div>
-    
+
+    <div class="input-field col s12">
+      <i class="material-icons prefix">flash_on</i>
+      <input formControlName="prefferedRoles" materialize="autocomplete" [materializeParams]="[{'data': temp}]" type="text" id="autocomplete-input"
+        class="autocomplete" (keyup.enter)="addRole(profileForm.value.prefferedRoles)">
+      <label for="autocomplete-input">Roles</label>
+    </div>
+
+    <div>
+      <span class="skills-list-header">Preffered roles: </span>
+      <div class="chip" *ngFor="let role of roles; let i=index">
+        {{role.role}}
+        <span (click)="removeRole(i)">x</span>
+      </div>
+    </div>
+
     <div class="input-field col s12">
       <i class="material-icons prefix">flag</i>
-      <input formControlName="nationality" materialize="autocomplete" [materializeParams]="[{'data': temp}]" type="text" id="autocomplete-input" class="autocomplete">
+      <input formControlName="nationality" materialize="autocomplete" [materializeParams]="[{'data': temp}]" type="text" id="autocomplete-input"
+        class="autocomplete">
       <label for="autocomplete-input">Nationality</label>
     </div>
-    
+
     <br/>
-    
+
     <div class="file-field input-field">
       <div class="btn">
         <span>Avatar</span>
@@ -59,7 +77,7 @@
 
 
     <button hidden></button>
-    <button [routerLink]="['/projects']" [disabled]="!profileForm.valid" class="btn right margin" (click)="saveProfile(profileForm.value)">Submit</button>
+    <button [routerLink]="['/app']" [disabled]="!profileForm.valid" class="btn right margin" (click)="saveProfile(profileForm.value)">Submit</button>
 
   </form>
 
