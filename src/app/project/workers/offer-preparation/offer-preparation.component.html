@@ -1,0 +1,44 @@
+<div class="container">
+
+  <header>
+    <h2>#JobOfferCreator</h2>
+  </header>
+
+  <section>
+
+    <form [formGroup]="offerForm">
+
+      <div class="row">
+
+        <div class="input-field col s12 m6 l6">
+          <i class="material-icons prefix">face</i>
+          <input type="text" id="firstName" data-length="120" formControlName="firstName">
+          <label for="firstName">First name</label>
+        </div>
+
+        <div class="input-field col s12 m6 l6">
+          <i class="material-icons prefix">face</i>
+          <input type="text" id="lastName" data-length="120" formControlName="lastName">
+          <label for="lastName">Last name</label>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="input-field col l4 m4 s12">
+          <i class="material-icons prefix">flash_on</i>
+          <select (change)="selectPosition($event.target.value)" id="position" materialize="material_select">
+            <option value="" disabled selected>Choose position</option>
+            <option *ngFor="let position of available_positions">{{position}}</option>
+          </select>
+          <label for="position">Position</label>
+        </div>
+      </div>
+
+      <button class="btn right" (click)="sendJobOffer(offerForm.value)">Send</button>
+
+    </form>
+
+  </section>
+
+</div>

@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { MaterializeModule } from 'angular2-materialize';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {MatButtonModule, MatCheckboxModule, MatSelectModule, MatIconModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './authorization/login/login.component';
@@ -21,17 +24,17 @@ import { DashboardComponent } from './project/dashboard/dashboard.component';
 import { AssignmentComponent } from './project/assignment/assignment.component';
 import { AnnoucementComponent } from './project/annoucement/annoucement.component';
 import { RepositoryParserService } from '@services/repository-parser.service';
-import { AssignmentListViewComponent } from './project/assignment/assignment-list-view/assignment-list-view.component';
-import { AssignmentCardViewComponent } from './project/assignment/assignment-card-view/assignment-card-view.component';
-import { AssignmentInfoComponent } from './project/assignment/assignment-info/assignment-info.component';
 import { WorkersComponent } from './project/workers/workers.component';
-import { AddNewWorkerComponent } from './project/workers/add-new-worker/add-new-worker.component';
-import { WorkersFinderService } from '@services/workers-finder.service';
+import { UserFinderComponent } from './project/workers/user-finder/user-finder.component';
 import { WorkerService } from '@services/worker.service';
 import { ProfileCreatorComponent } from './profile/profile-creator/profile-creator.component';
 import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 import { ProfileService } from '@services/profile.service';
 import { CreateNewAssignmentComponent } from './project/assignment/create-new-assignment/create-new-assignment.component';
+import { AssignmentService } from '@services/assignment.service';
+import { HireformComponent } from './project/workers/hireform/hireform.component';
+import { OfferPreparationComponent } from './project/workers/offer-preparation/offer-preparation.component';
+import { AssignmentDetailsComponent } from './project/assignment/assignment-details/assignment-details.component';
 
 @NgModule({
   declarations: [
@@ -46,23 +49,28 @@ import { CreateNewAssignmentComponent } from './project/assignment/create-new-as
     DashboardComponent,
     AssignmentComponent,
     AnnoucementComponent,
-    AssignmentListViewComponent,
-    AssignmentCardViewComponent,
-    AssignmentInfoComponent,
     WorkersComponent,
-    AddNewWorkerComponent,
+    UserFinderComponent,
     ProfileCreatorComponent,
     ProfileViewComponent,
-    CreateNewAssignmentComponent
+    CreateNewAssignmentComponent,
+    HireformComponent,
+    OfferPreparationComponent,
+    AssignmentDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
-    MaterializeModule
+    MaterializeModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatIconModule
   ],
-  providers: [AuthService, ProjectService, RepositoryParserService, WorkersFinderService, WorkerService, ProfileService],
+  providers: [AssignmentService, AuthService, ProjectService, RepositoryParserService, WorkerService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

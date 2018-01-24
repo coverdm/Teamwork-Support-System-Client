@@ -11,28 +11,6 @@ import { Name } from '@models/profile.model';
 export class AssignmentComponent implements OnInit {
 
   assignments: Assignment[] = [
-    {title: 'Ratpack - implementacja', description: 'Jakies badanie co i jak trzeba sie zaznajomic  badanie co i jak trzeba sie zaznajomic',
-    workers: [new Worker('dawid_matuszak@outlook.com', new Name('Dawid', 'Matuszak'),
-    'Project Manager', '../../../../assets/avatar6.jpg')], taskDifficult: 'EASY',
-    created: new Date(), deadline: new Date(), status: 'IN_PROGRESS'},
-
-    {title: 'Hibernate - implementacja',
-    description: 'Jakies badanie co i jak trzeba sie zaznajomic Jaasdasda co i jak trzeba sie zaznajomic ',
-    workers: [new Worker('dawid_matuszak@outlook.com', new Name('Dawid', 'Matuszak'),
-    'Project Manager', '../../../../assets/avatar6.jpg')], taskDifficult: 'EASY',
-    created: new Date(), deadline: new Date(), status: 'CREATED'},
-
-    {title: 'JPA - implementacja',
-    description: 'Jakies badanie co i jak trzeba sie zaznajomic  badanie co i jak trzeba sie zaznajomic',
-    workers: [new Worker('dawid_matuszak@outlook.com', new Name('Dawid', 'Matuszak'),
-    'Project Manager', '../../../../assets/avatar6.jpg')], taskDifficult: 'EASY',
-    created: new Date(), deadline: new Date(), status: 'FINISHED'},
-
-    {title: 'Spring - implementacja',
-    description: 'Jakies badanie co i jak trzeba sie zaznajomic Jaasdasda co i jak trzeba sie zaznajomic ',
-    workers: [new Worker('dawid_matuszak@outlook.com', new Name('Dawid', 'Matuszak'),
-    'Project Manager', '../../../../assets/avatar6.jpg')], taskDifficult: 'EASY',
-    created: new Date(), deadline: new Date(), status: 'CREATED'}
   ];
 
   todo: Array<Assignment> = new Array();

@@ -1,80 +1,134 @@
-#registerPane{
-    max-width: 400px;
-    margin: 100px auto;
-    // border-bottom: #26a69a 1px solid;
-}
+@import "../../../assets/colors.scss";
+@import "../../../assets/fonts.scss";
 
-h1{    
-    margin: 0 auto 40px auto;
-    padding: 3px;
-    font-size: 34px;
+#registerPane {
+  & {
+    max-width: 350px;
+    margin: 70px auto 30px auto;
+    background: #fff;
     text-align: center;
-    background: #26a69a;
-    color: #fff;
-    font-weight: 200;
-    text-transform: uppercase;
-}
+  }
 
-button{
-    float: right;
-    position: relative;
-    top:15px;
-    margin-left: 100px;
-    margin-top: 0;
-}
+  header {
+    & {
+      margin-bottom: 15px;
+      text-align: center;
+      padding: 20px;
+    }
 
-a{
-    margin-top: 25px;
-    float: left;
-    text-align: right;
-    font-weight: 300;
-    padding: 0 25px;
-}
+    i {
+      font-size: 70px;
+      color: $color-primary;
+    }
 
-a:hover{
-    color: #26a69a;
-    cursor: pointer;
-}
+    h1 {
+      margin: 0 auto;
+      padding: 5px;
+      font-size: $font-header-size;
+      text-align: center;
+      color: $color-primary;
+      font-weight: 300;
+    }
+  }
 
-.incorrect_validation{
+  .btn {
+    margin: 15px 0 15px 0;
+    width: 90%;
+  }
+
+  .incorrect_validation {
     float: right;
     color: #e53935;
     font-weight: 300;
     font-size: 12px;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
+  }
 }
 
-.custom_input {
-    margin-bottom: 0;
+#go-to-login-link {
+  & {
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  span {
+    font-weight: 300;
+  }
+
+  a {
+    & {
+      font-weight: 500;
+      color: #26a69a;
+    }
+
+    &:hover {
+      color: #26a69a;
+    }
+  }
 }
 
-.modal{
-    max-width: 480px;
-    max-height: 200px;
-    height: 166px;
+.modal {
+  & {
+    max-width: 50%;
+  }
+
+  .modal-header {
+    h1 {
+      font-size: $font-header-size;
+      padding: 5px;
+      margin: 0;
+      background: $color-primary;
+      border-bottom: $color-border-primary 1px solid;
+      color: white;
+      text-align: center;
+      font-weight: 200;
+    }
+  }
+
+  .modal-content {
+    i {
+      color: $color-primary;
+    }
+  }
 }
 
-.sign-add-args{
-    color: #26a69a;
+#success-info {
+  float: right;
+  font-size: 24px;
+  margin-top: 10px;
+  color: #26a69a;
 }
 
-#success-info{
-    float: right;
-    font-size: 24px;
-    margin-top: 10px;
-    color: #26a69a;
+#fail-info {
+  float: right;
+  font-size: 24px;
+  margin-top: 10px;
+  color: #bf360c;
 }
 
-#fail-info{
-    float: right;
-    font-size: 24px;
-    margin-top: 10px;
-    color: #bf360c;
+.continue-button {
+  top: -20px;
+  right: 20px;
+  padding-right: 20px;
 }
 
-.continue-button{
-    top: -20px;
-    right: 20px;
-    padding-right: 20px;
+@media only screen and (max-width: 452px) {
+  #registerPane {
+    & {
+      max-width: 100%;
+
+      header{
+        i {
+          font-size: 90px;
+        }
+      }
+
+    }
+    
+  }
+  .modal {
+    max-width: 90%;
+  }
 }

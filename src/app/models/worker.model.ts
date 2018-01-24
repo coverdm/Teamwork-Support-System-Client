@@ -3,15 +3,22 @@ import { Name } from '@models/profile.model';
 
 export class Worker {
 
-    id: string;
+    workerId: WorkerId;
     name: Name;
     project_role: string;
     avatar_url: string;
 
-    constructor($id: string, name: Name, $project_role: string, $avatar_url: string) {
+    constructor($workerId: WorkerId, name: Name, $project_role: string, $avatar_url: string) {
         this.project_role = $project_role;
         this.avatar_url = $avatar_url;
-        this.id = $id;
+        this.workerId = $workerId;
         this.name = name;
+    }
+}
+
+export class WorkerId{
+    workerId: string;
+    constructor(workerId: string) {
+        this.workerId = workerId;
     }
 }

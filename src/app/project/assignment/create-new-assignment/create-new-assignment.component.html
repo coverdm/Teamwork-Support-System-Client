@@ -17,51 +17,37 @@
       <label for="description">Description</label>
     </div>
 
-    <!-- -->
-    
     <div class="row">
-        <div class="col s12 m4 l4">
-          <div class="input-field">
-            <i class="material-icons prefix">account_circle</i>
-            <select (change)="addWorkerToList($event.target.value)"  id="taskDifficult" materialize="material_select">
-                <option value="" disabled selected>Choose workers</option>
-              <option *ngFor="let option of workers">{{option}}</option>
-            </select>
-            <label for="taskDifficult">Workers</label>
-          </div>
-        </div>
 
-        <div class="col s12 m8 l8 selected-workers">
-            <span class="selected-workers-header">Selected workers: </span>
-            <div class="chip" *ngFor="let worker of selectedWorkers; let i=index">
-              {{worker}}
-              <span (click)="removeWorkerFromList(i)">x</span>
-            </div>
-          </div>      
+      <mat-icon>people</mat-icon>
 
-      </div>
-    <!-- -->
+      <mat-form-field>
+        <mat-select placeholder="Workers" multiple formControlName="workers">
+          <mat-option *ngFor="let worker of workers" [value]="worker">
+            {{ worker.name ? worker.name.firstName + ' ' + worker.name.lastName : ''}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <div class="row">
-      <div class="col s12 m4 l4">
-        <div class="input-field">
-          <i class="material-icons prefix">flash_on</i>
-          <select formControlName="taskDifficult" id="taskDifficult" materialize="material_select">
-            <option *ngFor="let option of selectOptions" [value]="option.value">{{option}}</option>
-          </select>
-          <label for="taskDifficult">Task difficult</label>
-        </div>
-      </div>
     </div>
 
     <div class="row">
-      <div class="col s12 m4 l4">
-        <div class="input-field">
-          <i class="material-icons prefix">event</i>
-          <input id="deadline" type="text" class="datepicker" materialize="pickadate" formControlName="deadline">
-          <label for="deadline">Deadline</label>
-        </div>
-      </div>
+
+      <mat-icon>flash_on</mat-icon>
+
+      <mat-form-field>
+        <mat-select placeholder="Difficult">
+          <mat-option *ngFor="let difficult of difficults" [value]="difficults">{{difficult}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">event</i>
+      <input id="deadline" type="text" class="datepicker" materialize="pickadate" formControlName="deadline">
+      <label for="deadline">Deadline</label>
     </div>
 
     <button type="submit" class="btn right" [disabled]="!formAssignment.valid">Submit</button>

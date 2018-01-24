@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   registerModel: RegisterModel;
   preloader: boolean;
-  accountAlreadyExist: boolean;
+  problemWithRegistration: boolean;
 
   modalActions = new EventEmitter<string | MaterializeAction>();
 
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
   constructor(private fb: FormBuilder, private auth: AuthService) {
 
     this.preloader = true;
-    this.accountAlreadyExist = false;
+    this.problemWithRegistration = false;
 
     this.form = fb.group({
       email: ['', Validators.email],
@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
 
       const register = this.auth.register(value)
         .subscribe(res => res,
-        err => err.status === 424 ? this.accountAlreadyExist = true : this.accountAlreadyExist = false
+        err => err.status === 424 ? this.problemWithRegistration = true : this.problemWithRegistration = false
         );
 
       this.preloader = false;

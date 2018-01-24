@@ -63,6 +63,10 @@ export class ProfileCreatorComponent implements OnInit {
     this.skills.splice(index, 1);
   }
 
+  removeRole(index) {
+    this.roles.splice(index, 1);
+  }
+
   loadFile(event) {
     this.file = event.srcElement.files[0];
     console.log(this.file);

@@ -23,7 +23,7 @@
     </form>
 
     <p>
-        <a [routerLink]="[ '/login' ]">Back</a>
+        <a [routerLink]="[ '/app' ]">Back</a>
     </p>
 
     <!-- Modal Structure -->
@@ -69,7 +69,7 @@
 
             <!-- Default button shows when everything is ok -->
             <div *ngIf="!problem" class="modal-footer">
-                <button [routerLink]="[ '/project' ]" (click)="closeModal()" class="btn continue-button">Continue</button>
+                <button [routerLink]="[ '/app' ]" (click)="closeModal()" class="btn continue-button">Continue</button>
             </div>
 
         </div>

@@ -4,23 +4,31 @@ import { Contact } from '@models/contact.model';
 import { Subject } from 'rxjs/Subject';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import {JobOffer} from '@models/jobOffer.model';
 
 @Injectable()
 export class WorkerService {
 
+  port = '8080';
+  url_server = 'http://localhost' + ':' + this.port;
+  url_send_job_offer: string = this.url_server + '/api/project/' + localStorage.getItem('uuid') + '/workers/add';
+
   constructor(private http: Http) {
   }
 
-  // TODO add new worker
-  public sendRequestToJoin(email): void {
-    // this.workers_in_project.push(this.find(email.email));
-  }
+  public sendJobOffer(jobOffer: JobOffer) {
 
-  public addUserToProject(email: string) {
+    const body = JSON.stringify({
+      'userId': jobOffer.userId,
+      'projectRole': jobOffer.role,
+    });
 
-    const uuid = localStorage.getItem('uuid');
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
 
-    return this.http.get('http://localhost:8080/api/project/' + uuid + '?userId=' + email)
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.url_send_job_offer, body, options)
       .map((response: Response) => response.json());
   }
 

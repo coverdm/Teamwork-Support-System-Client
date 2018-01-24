@@ -73,3 +73,13 @@ export class Nationality {
         this.country = $country;
     }
 }
+
+export class MinProfile {
+    name: Name;
+    avatar: any;
+
+    constructor(name: Name, avatar: any) {
+        this.name = name;
+        this.avatar = avatar;
+    }
+}

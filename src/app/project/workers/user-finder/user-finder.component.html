@@ -1,13 +1,13 @@
 <div class="container">
 
-  <h2>#WorkerFinder</h2>
+  <h2>#UserFinder</h2>
 
-  <form [formGroup]="newWorkerForm" (ngSubmit)="sendRequestToJoin(newWorkerForm.value)">
+  <form [formGroup]="newWorkerForm">
 
     <input type="email" formControlName="email" placeholder="Type person email">
     <p class="note">##NOTE: Person needs to be registered in application</p>
 
-    <button  type="submit" class="btn">Request to Join</button>
+    <button (click)="prepareJobOffer()" type="submit" class="btn">Prepare offer</button>
 
   </form>
 

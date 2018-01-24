@@ -1,88 +1,104 @@
-#loginPane{
-    max-width: 450px;
-    margin: 100px auto 30px auto;
-    background: white;
-    border-radius: 5px;
-}
+@import "../../../assets/colors.scss";
+@import "../../../assets/fonts.scss";
 
-.active{
-    color: #37474f;
-}
-
-.col {
-    padding: 0;
-    margin: 0;
-}
-
-.row{
-    margin: 0;
-    padding: 0;
-}
-
-h1{
-    margin: 0 auto;
-    padding: 3px;
-    font-size: 34px;
+#loginPane {
+  & {
+    max-width: 350px;
+    margin: 70px auto 30px auto;
+    background: #fff;
     text-align: center;
-    background: #263238;
-    color: #fff;
-    font-weight: 200;
-    text-transform: uppercase;
+  }
+
+  header {
+    & {
+      margin-bottom: 25px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    i {
+      font-size: 60px;
+      color: $color-primary;
+    }
+
+    h1 {
+      margin: 0 auto;
+      padding: 5px;
+      font-size: $font-header-size;
+      text-align: center;
+      color: rgb(163, 163, 163);
+      font-weight: 300;
+    }
+  }
+
+  .btn {
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 90%;
+  }
+
+  #action-buttons {
+    text-align: center;
+  }
 }
 
-button{
-    // float: right;
-    background: #263238;
-    // margin: 0 10px 10px 10px;
+#additinal-options {
+  & {
+    max-width: 350px;
+    margin: 0px auto;
+  }
+  a {
+    font-weight: 500;
+    color: $color-primary;
+  }
 }
 
+.modal {
+  & {
+    max-width: 50%;
+  }
 
-.incorrect_validation{
-    float: right;
-    color: #e53935;
-    font-weight: 300;
-    font-size: 12px;
-    padding:0;
-    margin:0;
-}
-.modal{
-    max-width: 440px;
-    max-height: 200px;
-    height: 156px;
-}
+  .modal-header {
+    h1 {
+      font-size: $font-header-size;
+      padding: 5px;
+      margin: 0;
+      background: $color-primary;
+      border-bottom: $color-border-primary 1px solid;
+      color: white;
+      text-align: center;
+      font-weight: 200;
+    }
+  }
 
-.sign-add-args{
-    color: #bf360c;
-    float:left;
-    margin: 20px;
-}
+  .modal-content {
+    & {
+      text-align: center;
+    }
 
-#success-info{
-    float: right;
-    font-size: 24px;
-    // margin-top: 10px;
-    color: #26a69a;
-}
+    #login-failed, #login-successfully {
+      & {
+        text-align: center;
+      }
 
-#fail-info{
-    float: left;
-    font-size: 24px;
-    margin-top: 10px;
-    margin-left: 20px;
-    color: #bf360c;
-}
+      p {
+        font-size: 30px;
+        font-weight: 300;
+        margin: 0;
+      }
+    }
+  }
 
-.continue-button{
-    position: relative;
-    right: 30px;
-    margin:0 20px;
-    padding-right: 50px;
+  .modal-footer {
+    text-align: center;
+  }
 }
 
-.btn{
-    margin: 0 10px 10px 10px;
-}
-
-.btn:hover{
-    background: #37474f;
+@media only screen and (max-width: 452px) {
+    #loginPane{
+        max-width: 100%;
+    }
+  .modal {
+    max-width: 90%;
+  }
 }

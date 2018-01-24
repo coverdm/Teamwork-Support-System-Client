@@ -9,7 +9,7 @@
 
               <img src="{{worker.avatar_url}}" alt="" class="circle" style="object-fit: cover;">
               <span class="title">{{worker.projectRole}}</span>
-              <p class="worker-name">{{worker.userId}}</p>    
+              <p *ngIf="worker.name" class="worker-name">{{worker.name.firstName}} {{worker.name.lastName}}</p>    
 
           </div>
 
@@ -29,7 +29,7 @@
 
   <div class="add-new-worker">
 
-    <button class="btn right" [routerLink]="['../add-worker']"><i class="material-icons add-person">person_add</i></button>
+    <button class="btn right" [routerLink]="['../user-finder']"><i class="material-icons add-person">person_add</i></button>
 
   </div>
 

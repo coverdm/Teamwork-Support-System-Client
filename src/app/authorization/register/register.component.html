@@ -1,12 +1,14 @@
-<section id="registerPane">
+<section id="registerPane" class="z-depth-2">
 
-    <h1>Register</h1>
+    <header>
+        <i class="material-icons">account_circle</i>
+        <h1>Registration</h1>
+    </header>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
 
         <div class="input-field col s6" style="margin: 20px">
 
-            <i class="large material-icons prefix">account_box</i>
             <input style="margin-bottom: 0;" type="email" name="email" id="email" formControlName="email">
             <label class="active" for="email">Email</label>
 
@@ -17,7 +19,6 @@
 
         <div class="input-field col s6" style="margin: 20px">
 
-            <i class="medium material-icons prefix">lock</i>
             <input style="margin-bottom: 0" type="password" name="password" id="password" formControlName="password">
             <label class="active" for="password">Password</label>
 
@@ -29,7 +30,6 @@
 
         <div class="input-field col s6" style="margin: 20px">
 
-            <i class="medium material-icons prefix">lock</i>
             <input style="margin-bottom: 0" type="password" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword">
             <label class="active" for="confirmPassword">Repeat password</label>
 
@@ -41,68 +41,59 @@
 
         </div>
 
-        <!-- Modal trigger -->
         <button [disabled]="!form.valid" (click)="openModal()" class="btn waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
         </button>
+
     </form>
 
-    <p>
-        <a [routerLink]="[ '/login' ]">Back to login</a>
-    </p>
+</section>
 
-    <!-- Modal Structure -->
+<div id="go-to-login-link">
+    <span>Already have an account?</span> <a [routerLink]="[ '/login' ]">Back to login</a>
+</div>
 
-    <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
-        <div class="modal-content">
 
-            <div *ngIf="preloader">
+<div id="modal" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
 
-                <div class="progress">
-                    <div class="indeterminate"></div>
-                </div>
+    <div class="modal-header">
+        <h1>Performing registration</h1>
+    </div>
 
+    <div class="modal-content">
+
+        <div *ngIf="preloader">
+
+            <div class="progress">
+                <div class="indeterminate"></div>
             </div>
-
-            <div *ngIf="!preloader">
-
-                <div *ngIf="!accountAlreadyExist">
-
-                    <div>
-                        <i class="sign-add-args material-icons prefix medium">verified_user</i>
-                        <p id="success-info">Registered successfully</p>
-                    </div>
-
-                </div>
-
-                <div *ngIf="accountAlreadyExist">
-
-                    <div>
-                        <i class="sign-add-args material-icons prefix medium">thumb_down</i>
-                        <p id="fail-info">Account already exists</p>
-                    </div>
-
-                </div>
-
-            </div>
-
 
         </div>
 
         <div *ngIf="!preloader">
-
-            <!-- Default button shows when everything is ok -->
-            <div *ngIf="!accountAlreadyExist" class="modal-footer">
-                <button (click)="closeModal()" class="btn continue-button">Continue</button>
+            <div *ngIf="!problemWithRegistration">
+                <i class="material-icons prefix">verified_user</i>
+                <p id="success-info">Registered successfully</p>
             </div>
 
-            <!-- Shows button when account already exists -->
-            <div *ngIf="accountAlreadyExist" class="modal-footer">
-                <button style="background-color: #f4511e" (click)="closeModal()" class="btn continue-button">Try again</button>
+            <div *ngIf="problemWithRegistration">
+                <i class="material-icons prefix">warning</i>
+                <p id="fail-info">Account already exists</p>
             </div>
-
         </div>
 
     </div>
 
-</section>
+    <div *ngIf="!preloader">
+
+        <div *ngIf="!problemWithRegistration" class="modal-footer">
+            <button (click)="closeModal()" class="btn">Continue</button>
+        </div>
+
+        <div *ngIf="problemWithRegistration" class="modal-footer">
+            <button (click)="closeModal()" class="btn">Try again</button>
+        </div>
+
+    </div>
+
+</div>

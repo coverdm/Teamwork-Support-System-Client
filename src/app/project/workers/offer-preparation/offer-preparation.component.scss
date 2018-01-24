@@ -1,0 +1,25 @@
+// @import "../../../assets/colors.scss";
+@import "../../../../assets/fonts.scss";
+
+.container{
+
+    header{
+
+        &{
+            margin-bottom: 25px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2{
+
+            margin: 0 auto;
+            padding: 5px;
+            text-align: left;
+            font-weight: 200;
+
+        }
+
+    }
+
+}
