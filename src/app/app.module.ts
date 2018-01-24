@@ -27,8 +27,7 @@ import { RepositoryParserService } from '@services/repository-parser.service';
 import { WorkersComponent } from './project/workers/workers.component';
 import { UserFinderComponent } from './project/workers/user-finder/user-finder.component';
 import { WorkerService } from '@services/worker.service';
-import { ProfileCreatorComponent } from './profile/profile-creator/profile-creator.component';
-import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
+import { ProfileModule } from './profile/profile.module';
 import { ProfileService } from '@services/profile.service';
 import { CreateNewAssignmentComponent } from './project/assignment/create-new-assignment/create-new-assignment.component';
 import { AssignmentService } from '@services/assignment.service';
@@ -39,8 +38,6 @@ import { AssignmentDetailsComponent } from './project/assignment/assignment-deta
 @NgModule({
   declarations: [
     AppComponent,
-    // LoginComponent,
-    // RegisterComponent,
     ProjectListComponent,
     NavComponent,
     CreateProjectComponent,
@@ -51,8 +48,6 @@ import { AssignmentDetailsComponent } from './project/assignment/assignment-deta
     AnnoucementComponent,
     WorkersComponent,
     UserFinderComponent,
-    ProfileCreatorComponent,
-    ProfileViewComponent,
     CreateNewAssignmentComponent,
     HireformComponent,
     OfferPreparationComponent,
@@ -69,9 +64,10 @@ import { AssignmentDetailsComponent } from './project/assignment/assignment-deta
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
-    AuthorizationModule
+    AuthorizationModule,
+    ProfileModule
   ],
-  providers: [AssignmentService, AuthService, ProjectService, RepositoryParserService, WorkerService, ProfileService],
+  providers: [AssignmentService, ProjectService, RepositoryParserService, WorkerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
