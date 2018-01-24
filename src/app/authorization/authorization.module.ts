@@ -7,17 +7,18 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { MaterializeModule } from 'angular2-materialize';
-import { SuccessfullDialogComponent } from './successfull-dialog/successfull-dialog.component';
-import { FailureDialogComponent } from './failure-dialog/failure-dialog.component';
+import { UtilModule } from 'app/util/util.module';
+
 @NgModule({
   imports: [
     CommonModule,
     HttpModule,
     ReactiveFormsModule,
     MaterializeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    UtilModule
   ],
-  declarations: [ LoginComponent, RegisterComponent, SuccessfullDialogComponent, FailureDialogComponent],
+  declarations: [ LoginComponent, RegisterComponent],
   providers: [ AuthService ]
 })
 export class AuthorizationModule { }

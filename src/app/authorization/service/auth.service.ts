@@ -42,8 +42,6 @@ export class AuthService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    console.log(body);
-
     return this.http.post(this.url_register, body, options)
       .map((data) => data.json(), (err) => err);
   }
@@ -51,5 +49,10 @@ export class AuthService {
   private handleError(error: any) {
     console.error(error);
     return Observable.throw(error);
+  }
+
+  public logout(){
+    localStorage.getItem("userId") ? localStorage.removeItem("userId") : null;
+    localStorage.getItem("token") ? localStorage.removeItem("token") : null;
   }
 }

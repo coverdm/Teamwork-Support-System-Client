@@ -21,6 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RepositoryParserService } from '@services/repository-parser.service';
 import { AssignmentModule } from 'app/assignment/assignment.module';
 import { ProjectModule } from 'app/project/project.module';
+import { UtilModule } from 'app/util/util.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ProjectModule } from 'app/project/project.module';
     ProfileModule,
     WorkersModule,
     AssignmentModule,
-    ProjectModule
+    ProjectModule,
+    UtilModule
   ],
   providers: [RepositoryParserService],
   bootstrap: [AppComponent]
