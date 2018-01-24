@@ -4,6 +4,9 @@ import { Component, OnInit, EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../service/auth.service";
 import { MaterializeAction } from "angular2-materialize";
+import { DialogComponent } from "../../util/dialog/dialog.component";
+import { DialogProperties } from "../../util/dialog/dialog-properties.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-register",
@@ -12,25 +15,19 @@ import { MaterializeAction } from "angular2-materialize";
   providers: [AuthService]
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup;
-  registerModel: RegisterModel;
-  preloader: boolean;
-  problemWithRegistration: boolean;
+  title: string = "Registration";
+  registerForm: FormGroup;
+  openDialog: boolean;
+  dialogProperties: DialogProperties = new DialogProperties(
+    "Performing registration"
+  );
 
-  modalActions = new EventEmitter<string | MaterializeAction>();
-
-  openModal() {
-    this.modalActions.emit({ action: "modal", params: ["open"] });
-  }
-  closeModal() {
-    this.modalActions.emit({ action: "modal", params: ["close"] });
-  }
-
-  constructor(private fb: FormBuilder, private auth: AuthService) {
-    this.preloader = true;
-    this.problemWithRegistration = false;
-
-    this.form = fb.group(
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.registerForm = formBuilder.group(
       {
         email: ["", Validators.email],
         password: [
@@ -48,22 +45,28 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
+  closedDialog(event) {
+    if (event) this.openDialog = false;
+    this.dialogProperties.isError ? null : this.router.navigate(["/login"]);
+  }
+
   onSubmit(value: RegisterModel) {
+    this.openDialog = true;
+    this.dialogProperties.showLoader = true;
 
-    this.preloader = true;
+    this.authService.register(value).subscribe(
+      response => response,
+      err => {
+        if (err.status === 424) {
+          this.dialogProperties.isError = true;
+          this.dialogProperties.message = "Problem with registration";
+        } else {
+          this.dialogProperties.isError = false;
+          this.dialogProperties.message = "Registration went successfully";
+        }
+      }
+    );
 
-    setTimeout(() => {
-      const register = this.auth
-        .register(value)
-        .subscribe(
-          res => res,
-          err =>
-            err.status === 424
-              ? (this.problemWithRegistration = true)
-              : (this.problemWithRegistration = false)
-        );
-
-      this.preloader = false;
-    }, 1000);
+    this.dialogProperties.showLoader = false;
   }
 }

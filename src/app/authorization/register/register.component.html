@@ -2,17 +2,17 @@
 
     <header>
         <i class="material-icons">account_circle</i>
-        <h1>Registration</h1>
+        <h1>{{title}}</h1>
     </header>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)" novalidate>
 
         <div class="input-field col s6" style="margin: 20px">
 
             <input style="margin-bottom: 0;" type="email" name="email" id="email" formControlName="email">
             <label class="active" for="email">Email</label>
 
-            <div class="incorrect_validation" *ngIf="!form.controls['email'].valid && form.controls['email'].touched"> Invalid email format</div>
+            <div class="incorrect_validation" *ngIf="!registerForm.controls['email'].valid && registerForm.controls['email'].touched"> Invalid email format</div>
             <div class="incorrect_validation" *ngIf="isAccountExists"> Account already exists</div>
 
         </div>
@@ -22,7 +22,7 @@
             <input style="margin-bottom: 0" type="password" name="password" id="password" formControlName="password">
             <label class="active" for="password">Password</label>
 
-            <div class="incorrect_validation" *ngIf="!form.controls['password'].valid && form.controls['password'].touched">
+            <div class="incorrect_validation" *ngIf="!registerForm.controls['password'].valid && registerForm.controls['password'].touched">
                 Password needs to have [A-Z][a-z][1-9]
             </div>
 
@@ -33,15 +33,15 @@
             <input style="margin-bottom: 0" type="password" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword">
             <label class="active" for="confirmPassword">Repeat password</label>
 
-            <div *ngIf="form.controls['confirmPassword'].touched && !form.controls['confirmPassword'].valid">
-                <div class="incorrect_validation" *ngIf="form.hasError('mismatchedPasswords')">
+            <div *ngIf="registerForm.controls['confirmPassword'].touched && !registerForm.controls['confirmPassword'].valid">
+                <div class="incorrect_validation" *ngIf="registerForm.hasError('mismatchedPasswords')">
                     Password does not matched
                 </div>
             </div>
 
         </div>
 
-        <button [disabled]="!form.valid" (click)="openModal()" class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <button [disabled]="!registerForm.valid" (click)="openModal()" class="btn waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
         </button>
 
@@ -53,47 +53,4 @@
     <span>Already have an account?</span> <a [routerLink]="[ '/login' ]">Back to login</a>
 </div>
 
-
-<div id="modal" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
-
-    <div class="modal-header">
-        <h1>Performing registration</h1>
-    </div>
-
-    <div class="modal-content">
-
-        <div *ngIf="preloader">
-
-            <div class="progress">
-                <div class="indeterminate"></div>
-            </div>
-
-        </div>
-
-        <div *ngIf="!preloader">
-            <div *ngIf="!problemWithRegistration">
-                <i class="material-icons prefix">verified_user</i>
-                <p id="success-info">Registered successfully</p>
-            </div>
-
-            <div *ngIf="problemWithRegistration">
-                <i class="material-icons prefix">warning</i>
-                <p id="fail-info">Account already exists</p>
-            </div>
-        </div>
-
-    </div>
-
-    <div *ngIf="!preloader">
-
-        <div *ngIf="!problemWithRegistration" class="modal-footer">
-            <button (click)="closeModal()" class="btn">Continue</button>
-        </div>
-
-        <div *ngIf="problemWithRegistration" class="modal-footer">
-            <button (click)="closeModal()" class="btn">Try again</button>
-        </div>
-
-    </div>
-
-</div>
+<app-dialog (closedDialog)="closedDialog($event)" [openDialog]="openDialog" [properties]="dialogProperties"></app-dialog>

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MaterializeAction } from "angular2-materialize";
 import { DialogComponent } from "../../util/dialog/dialog.component";
 import { DialogProperties } from "../../util/dialog/dialog-properties.model";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-login",
@@ -15,15 +16,12 @@ import { DialogProperties } from "../../util/dialog/dialog-properties.model";
 export class LoginComponent implements OnInit {
 
   title: string = "Authentication";
+  loginForm: FormGroup;
+  
   dialogProperties: DialogProperties = new DialogProperties('Performing authentication');
-
   openDialog: boolean;
 
-  loginForm: FormGroup;
-  problemWithLogin: boolean;
-  preloader: boolean;
-
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -38,6 +36,9 @@ export class LoginComponent implements OnInit {
 
   closedDialog(event) {
     if (event) this.openDialog = false;
+
+    this.dialogProperties.isError ? null : this.router.navigate(['/app']);
+
   }
 
   login(loginModel: LoginModel) {
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(loginModel).subscribe(
       response => {
+
         localStorage.setItem("token", response.token);
         localStorage.setItem("userId", response.id);
 
@@ -56,6 +58,7 @@ export class LoginComponent implements OnInit {
       error => {
         if (error.status === 401) {
           this.dialogProperties.message = "Authentication problem";
+          this.dialogProperties.isError = true;
         }
       }
     );

@@ -18,10 +18,7 @@ export class AuthService {
 
   login(loginModel: LoginModel): Observable<AuthModel> {
 
-    const body = JSON.stringify({
-      'email': loginModel.email,
-      'password': loginModel.password
-    });
+    const body = JSON.stringify(loginModel);
 
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
@@ -32,12 +29,7 @@ export class AuthService {
   }
 
   register(registerModel: RegisterModel): Observable<Response> {
-    const body = JSON.stringify({
-      'email': registerModel.email,
-      'password': registerModel.confirmPassword,
-      'confirmPassword': registerModel.confirmPassword,
-      'username': 'jakisUsername'
-    });
+    const body = JSON.stringify(registerModel);
 
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
