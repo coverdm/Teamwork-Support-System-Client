@@ -7,11 +7,11 @@ import { MinProfile } from '@models/profile.model';
 
 @Component({
   selector: 'app-workers',
-  templateUrl: './workers.component.html',
-  styleUrls: ['./workers.component.scss'],
+  templateUrl: './workers-list.component.html',
+  styleUrls: ['./workers-list.component.scss'],
   providers: [WorkerService, ProfileService]
 })
-export class WorkersComponent implements OnInit {
+export class WorkersListComponent implements OnInit {
 
   workers: Worker[];
   minProfiles: MinProfile[];

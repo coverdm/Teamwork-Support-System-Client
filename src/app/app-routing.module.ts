@@ -8,13 +8,13 @@ import { AssignmentComponent } from './project/assignment/assignment.component';
 import { CreateNewAssignmentComponent } from './project/assignment/create-new-assignment/create-new-assignment.component';
 import { SideNavComponent } from './project/side-nav/side-nav.component';
 import { SourceCodeComponent } from './project/source-code/source-code.component';
-import { WorkersComponent } from './project/workers/workers.component';
-import { UserFinderComponent } from './project/workers/user-finder/user-finder.component';
+import { WorkersListComponent } from './workers/workers-list/workers-list.component';
+import { UserFinderComponent } from './workers/user-finder/user-finder.component';
 import { ProfileCreatorComponent } from './profile/profile-creator/profile-creator.component';
 import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 import { NavComponent } from 'app/nav/nav.component';
-import { DashboardComponent } from 'app/project/dashboard/dashboard.component';
-import { OfferPreparationComponent } from './project/workers/offer-preparation/offer-preparation.component';
+import { DashboardComponent } from 'app/dashboard/dashboard.component';
+import { OfferPreparationComponent } from './workers/offer-preparation/offer-preparation.component';
 import { AssignmentDetailsComponent } from './project/assignment/assignment-details/assignment-details.component';
 
 const routes: Routes = [
@@ -34,7 +34,7 @@ const routes: Routes = [
       { path: 'assignment', component: AssignmentComponent },
       { path: 'create-new-assignment', component: CreateNewAssignmentComponent },
       { path: 'source-code', component: SourceCodeComponent },
-      { path: 'workers', component: WorkersComponent },
+      { path: 'workers', component: WorkersListComponent },
       { path: 'user-finder', component: UserFinderComponent },
       { path: 'offer-preparation/:userId', component: OfferPreparationComponent},
       { path: 'assignment-details/:assignmentId', component: AssignmentDetailsComponent}

@@ -4,9 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
-import { AuthModel } from '@models/auth.model.ts';
-import { RegisterModel } from '@models/register.model.ts';
-import { LoginModel } from '@models/login.model.ts';
+import { LoginModel } from '../model/login.model';
+import { AuthModel } from '../model/auth.model';
+import { RegisterModel } from '../model/register.model';
 
 @Injectable()
 export class AuthService {

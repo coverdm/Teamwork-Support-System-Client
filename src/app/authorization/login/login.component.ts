@@ -1,7 +1,7 @@
+import {AuthService} from '../service/auth.service';
+import {LoginModel} from '../model/login.model';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '@services/auth.service.ts';
-import { LoginModel } from '@models/login.model.ts';
 import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
