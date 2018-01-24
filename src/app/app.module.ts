@@ -6,13 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { MaterializeModule } from 'angular2-materialize';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthorizationModule } from './authorization/authorization.module';
 
-import {MatButtonModule, MatCheckboxModule, MatSelectModule, MatIconModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatSelectModule, MatIconModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './authorization/login/login.component';
-import { RegisterComponent } from './authorization/register/register.component';
+
 import { AuthService } from './services/auth.service';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { ProjectService } from './services/project-list-provider.service';
@@ -39,8 +39,8 @@ import { AssignmentDetailsComponent } from './project/assignment/assignment-deta
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
+    // LoginComponent,
+    // RegisterComponent,
     ProjectListComponent,
     NavComponent,
     CreateProjectComponent,
@@ -68,7 +68,8 @@ import { AssignmentDetailsComponent } from './project/assignment/assignment-deta
     MatCheckboxModule,
     MatButtonModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    AuthorizationModule
   ],
   providers: [AssignmentService, AuthService, ProjectService, RepositoryParserService, WorkerService, ProfileService],
   bootstrap: [AppComponent]
