@@ -14,32 +14,21 @@ import { AuthorizationModule } from './authorization/authorization.module';
 import { ProfileModule } from './profile/profile.module';
 import { WorkersModule } from './workers/workers.module';
 
-import { ProjectListComponent } from './project/project-list/project-list.component';
-import { ProjectService } from './services/project-list-provider.service';
 import { NavComponent } from './nav/nav.component';
-import { CreateProjectComponent } from './project/create-project/create-project.component';
-import { SideNavComponent } from './project/side-nav/side-nav.component';
-import { SourceCodeComponent } from './project/source-code/source-code.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { SourceCodeComponent } from './source-code/source-code.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AssignmentComponent } from './project/assignment/assignment.component';
 import { RepositoryParserService } from '@services/repository-parser.service';
-import { CreateNewAssignmentComponent } from './project/assignment/create-new-assignment/create-new-assignment.component';
-import { AssignmentService } from '@services/assignment.service';
-import { AssignmentDetailsComponent } from './project/assignment/assignment-details/assignment-details.component';
-
+import { AssignmentModule } from 'app/assignment/assignment.module';
+import { ProjectModule } from 'app/project/project.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectListComponent,
     NavComponent,
-    CreateProjectComponent,
     SideNavComponent,
     SourceCodeComponent,
     DashboardComponent,
-    AssignmentComponent,
-    CreateNewAssignmentComponent,
-    AssignmentDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +43,11 @@ import { AssignmentDetailsComponent } from './project/assignment/assignment-deta
     MatIconModule,
     AuthorizationModule,
     ProfileModule,
-    WorkersModule
+    WorkersModule,
+    AssignmentModule,
+    ProjectModule
   ],
-  providers: [AssignmentService, ProjectService, RepositoryParserService],
+  providers: [RepositoryParserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

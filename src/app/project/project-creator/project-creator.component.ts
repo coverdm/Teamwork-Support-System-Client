@@ -5,12 +5,12 @@ import { ProjectProperties } from '@models/project.model.ts';
 import { ProjectService } from '@services/project-list-provider.service';
 
 @Component({
-  selector: 'app-create-project',
-  templateUrl: './create-project.component.html',
-  styleUrls: ['./create-project.component.scss'],
+  selector: 'app-project-creator',
+  templateUrl: './project-creator.component.html',
+  styleUrls: ['./project-creator.component.scss'],
   providers: [ProjectService]
 })
-export class CreateProjectComponent implements OnInit {
+export class ProjectCreatorComponent implements OnInit {
 
   problems: boolean;
   form: FormGroup;

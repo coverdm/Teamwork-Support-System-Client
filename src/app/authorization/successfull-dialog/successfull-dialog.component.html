@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <h1>Performing authentication</h1>
+</div>
+
+<div class="modal-content">
+
+  <div *ngIf="preloader">
+
+    <div class="progress">
+      <div class="indeterminate"></div>
+    </div>
+
+  </div>
+
+  <div *ngIf="!preloader">
+
+    <div id="login-successfully" *ngIf="!problemWithLogin">
+      <p>Authentication successfully</p>
+    </div>
+
+    <div id="login-failed" *ngIf="problemWithLogin">
+      <p>Login invalid</p>
+    </div>
+
+  </div>
+
+
+</div>
+
+<div *ngIf="!preloader">
+
+  <div *ngIf="!problemWithLogin" class="modal-footer">
+    <button [routerLink]="[ '/app']" (click)="closeModal()" class="btn continue-button">Continue</button>
+  </div>
+
+  <div *ngIf="problemWithLogin" class="modal-footer">
+    <button [routerLink]="[ '/login' ]" (click)="closeModal()" class="btn continue-button">Try again</button>
+  </div>
+
+</div>

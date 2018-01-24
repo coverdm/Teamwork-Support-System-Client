@@ -3,11 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './authorization/login/login.component';
 import { RegisterComponent } from './authorization/register/register.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
-import { CreateProjectComponent } from './project/create-project/create-project.component';
-import { AssignmentComponent } from './project/assignment/assignment.component';
-import { CreateNewAssignmentComponent } from './project/assignment/create-new-assignment/create-new-assignment.component';
-import { SideNavComponent } from './project/side-nav/side-nav.component';
-import { SourceCodeComponent } from './project/source-code/source-code.component';
+import { AssignmentListComponent } from './assignment/assignment-list/assignment-list.component';
+import { AssignmentCreatorComponent } from './assignment/assignment-creator/assignment-creator.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { SourceCodeComponent } from './source-code/source-code.component';
 import { WorkersListComponent } from './workers/workers-list/workers-list.component';
 import { UserFinderComponent } from './workers/user-finder/user-finder.component';
 import { ProfileCreatorComponent } from './profile/profile-creator/profile-creator.component';
@@ -15,7 +14,8 @@ import { ProfileViewComponent } from './profile/profile-view/profile-view.compon
 import { NavComponent } from 'app/nav/nav.component';
 import { DashboardComponent } from 'app/dashboard/dashboard.component';
 import { OfferPreparationComponent } from './workers/offer-preparation/offer-preparation.component';
-import { AssignmentDetailsComponent } from './project/assignment/assignment-details/assignment-details.component';
+import { AssignmentDetailsComponent } from './assignment/assignment-details/assignment-details.component';
+import { ProjectCreatorComponent } from 'app/project/project-creator/project-creator.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -26,13 +26,13 @@ const routes: Routes = [
   children: [
     { path: '', component: ProjectListComponent },
     { path: 'profile', component: ProfileViewComponent },
-    { path: 'create-project', component: CreateProjectComponent },
+    { path: 'create-project', component: ProjectCreatorComponent },
     { path: 'project', component: SideNavComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'assignment', component: AssignmentComponent },
-      { path: 'create-new-assignment', component: CreateNewAssignmentComponent },
+      { path: 'assignment', component: AssignmentListComponent },
+      { path: 'create-new-assignment', component: AssignmentCreatorComponent },
       { path: 'source-code', component: SourceCodeComponent },
       { path: 'workers', component: WorkersListComponent },
       { path: 'user-finder', component: UserFinderComponent },

@@ -12,6 +12,8 @@ import { MaterializeAction } from 'angular2-materialize';
 })
 export class LoginComponent implements OnInit {
 
+  title: string = 'Authentication';
+
   form: FormGroup;
   problemWithLogin: boolean;
   preloader: boolean;

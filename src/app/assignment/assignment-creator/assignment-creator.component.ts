@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-create-new-assignment',
-  templateUrl: './create-new-assignment.component.html',
-  styleUrls: ['./create-new-assignment.component.scss'],
+  selector: 'app-assignment-creator',
+  templateUrl: './assignment-creator.component.html',
+  styleUrls: ['./assignment-creator.component.scss'],
   providers: [WorkerService, ProfileService, AssignmentService]
 })
-export class CreateNewAssignmentComponent implements OnInit {
+export class AssignmentCreatorComponent implements OnInit {
 
   formAssignment: FormGroup;
   difficults: Array<string>;

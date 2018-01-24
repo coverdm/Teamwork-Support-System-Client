@@ -4,11 +4,11 @@ import { Worker } from '@models/worker.model';
 import { Name } from '@models/profile.model';
 
 @Component({
-  selector: 'app-assignment',
-  templateUrl: './assignment.component.html',
-  styleUrls: ['./assignment.component.scss']
+  selector: 'app-assignment-list',
+  templateUrl: './assignment-list.component.html',
+  styleUrls: ['./assignment-list.component.scss']
 })
-export class AssignmentComponent implements OnInit {
+export class AssignmentListComponent implements OnInit {
 
   assignments: Assignment[] = [
   ];
