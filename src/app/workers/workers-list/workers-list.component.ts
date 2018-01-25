@@ -3,6 +3,7 @@ import { WorkerService } from "../service/worker.service";
 import { ProfileService } from "../../profile/service/profile.service";
 import { MinProfile } from "../../profile/model/min-profile.model";
 import { Worker } from "../model/worker.model";
+import { BasicRolePipe } from "../basic-role.pipe";
 
 @Component({
   selector: "app-workers",

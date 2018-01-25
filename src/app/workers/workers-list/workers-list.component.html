@@ -8,7 +8,7 @@
           <div class="worker-main">
 
               <img src="../../../assets/avatar6.jpg" alt="" class="circle" style="object-fit: cover;">
-              <span class="title">{{worker.projectRole}}</span>
+              <span class="title">{{worker.projectRole | basicRole}}</span>
               <p *ngIf="worker.name" class="worker-name">{{worker.name.firstName}} {{worker.name.lastName}}</p>    
 
           </div>

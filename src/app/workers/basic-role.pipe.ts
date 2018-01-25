@@ -5,8 +5,23 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class BasicRolePipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return null;
+  transform(value: string, args?: any): any {
+    
+    console.log(value);
+
+    if (value) {
+      let transformed = value.replace('_', ' ');
+      
+      console.log(transformed);
+
+      transformed.charAt(0).toUpperCase();
+
+      console.log(transformed);
+
+      return transformed;
+    }
+    
+    return 'niet';
   }
 
 }
