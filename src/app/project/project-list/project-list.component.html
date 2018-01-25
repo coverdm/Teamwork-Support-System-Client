@@ -1,18 +1,19 @@
 <section id="project-list-section">
 
-  <h2>Projects</h2>
+  <header>
+    <h1>{{title}}</h1>
+  </header>
 
   <div class="collection">
 
-    <div *ngFor="let item of projectItems; let i=index">
+    <div *ngFor="let project of projects; let i=index">
 
-      <a (click)="project(i)" [routerLink]="['project']" class="collection-item">
-        <span>{{item.projectProperties.name}}</span>
+      <a (click)="loadProject(i)" class="collection-item">
+        <span>{{project.projectProperties.name}}</span>
         <div class="additional_args">
 
           <i class="material-icons">monetization_on</i>
           <i class="material-icons">perm_contact_calendar</i>
-          <!-- <i class="material-icons">public</i> -->
           <i class="material-icons">lock_outline</i>
 
         </div>
@@ -25,7 +26,7 @@
   <button [routerLink]="[ 'create-project' ]" class="btn waves-effect waves-light" type="submit" name="action">Create project
     <i class="material-icons right">send</i>
   </button>
-  
+
   <div *ngIf="isProjectListEmpty()">
 
 

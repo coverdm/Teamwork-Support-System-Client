@@ -1,6 +1,8 @@
 <div class="container">
 
-  <h2>#Profile</h2>
+  <header>
+    <h2>{{title}}</h2>
+  </header>
 
   <form [formGroup]="profileForm">
 
@@ -20,7 +22,7 @@
 
     </div>
 
-    <div class="input-field">
+    <div class="input-field col s12">
       <i class="material-icons prefix">computer</i>
       <input id="skype" type="text" class="skype" formControlName="skype">
       <label for="skype">Skype account</label>
@@ -33,34 +35,25 @@
       <label for="autocomplete-input">Skill</label>
     </div>
 
-    <div>
-      <!-- <span class="skills-list-header">Skills: </span> -->
+
+    <p>Skills:</p>
       <div class="chip" *ngFor="let skill of skills; let i=index">
         {{skill.name}}
         <span (click)="removeSkill(i)">x</span>
       </div>
-    </div>
-
+    
     <div class="input-field col s12">
       <i class="material-icons prefix">event_seat</i>
-      <input formControlName="prefferedRoles" materialize="autocomplete" [materializeParams]="[{'data': temp}]" type="text" id="autocomplete-input"
+      <input formControlName="prefferedRoles" materialize="autocomplete" [materializeParams]="[{'data': roles}]" type="text" id="autocomplete-input"
         class="autocomplete" (keyup.enter)="addRole(profileForm.value.prefferedRoles)">
-      <label for="autocomplete-input">Roles</label>
+      <label for="autocomplete-input">Preffered roles</label>
     </div>
 
-    <div>
-      <!-- <span class="skills-list-header">Preffered roles: </span> -->
-      <div class="chip" *ngFor="let role of roles; let i=index">
-        {{role.role}}
-        <span (click)="removeRole(i)">x</span>
-      </div>
-    </div>
 
-    <div class="input-field col s12">
-      <i class="material-icons prefix">flag</i>
-      <input formControlName="nationality" materialize="autocomplete" [materializeParams]="[{'data': temp}]" type="text" id="autocomplete-input"
-        class="autocomplete">
-      <label for="autocomplete-input">Nationality</label>
+    <p class="left">Preffered Roles:</p>
+    <div class="chip" *ngFor="let role of prefferedRoles; let i=index">
+      {{role.role}}
+      <span (click)="removeRole(i)">x</span>
     </div>
 
     <br/>
@@ -77,8 +70,9 @@
 
 
     <button hidden></button>
-    <button [routerLink]="['/app']" [disabled]="!profileForm.valid" class="btn right margin" (click)="saveProfile(profileForm.value)">Submit</button>
+    <button [disabled]="!profileForm.valid" class="btn right" (click)="saveProfile(profileForm.value)">Submit</button>
 
   </form>
-
 </div>
+
+<app-dialog (closedDialog)="closedDialog($event)" [openDialog]="openDialog" [properties]="dialogProperties"></app-dialog>

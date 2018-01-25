@@ -1,4 +1,3 @@
-import { Worker } from '@models/worker.model';
 import { Time } from '@angular/common/src/i18n/locale_data_api';
 
 export class Assignment {

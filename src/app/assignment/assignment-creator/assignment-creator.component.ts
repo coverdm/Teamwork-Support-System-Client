@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Assignment } from '@models/assignment.model';
-import { WorkerService } from '@services/worker.service';
+import { Assignment } from '../model/assignment.model';
 import { MaterializeDirective } from 'angular2-materialize';
-import { Worker, WorkerId } from '@models/worker.model';
-import { ProfileService } from '@services/profile.service';
-import { MinProfile } from '@models/profile.model';
-import { AssignmentService } from '@services/assignment.service';
+import { AssignmentService } from '../service/assignment.service';
 import { Time } from '@angular/common/src/i18n/locale_data_api';
 import { Router } from '@angular/router';
-
+import { WorkerService } from 'app/workers/service/worker.service';
+import { MinProfile } from 'app/profile/model/min-profile.model';
+import { Worker, WorkerId } from '../../workers/model/worker.model';
 
 @Component({
   selector: 'app-assignment-creator',
   templateUrl: './assignment-creator.component.html',
   styleUrls: ['./assignment-creator.component.scss'],
-  providers: [WorkerService, ProfileService, AssignmentService]
+  providers: [WorkerService, AssignmentService]
 })
 export class AssignmentCreatorComponent implements OnInit {
 
@@ -26,7 +24,6 @@ export class AssignmentCreatorComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private workerService: WorkerService,
-              private profileService: ProfileService,
               private assignmentService: AssignmentService,
               private router: Router) { }
 
@@ -42,13 +39,13 @@ export class AssignmentCreatorComponent implements OnInit {
       deadline: ['', [Validators.required]],
     });
 
-    this.workerService.getWorkers().subscribe(workers => {
-      this.workers = workers;
-      this.profileService.getMinProfiles(workers).subscribe(minProfiles => {
-        this.minProfiles = minProfiles;
-        this.combineProfilesWithWorkers();
-      });
-    });
+    // this.workerService.getWorkers().subscribe(workers => {
+    //   this.workers = workers;
+    //   this.profileService.getMinProfiles(workers).subscribe(minProfiles => {
+    //     this.minProfiles = minProfiles;
+    //     this.combineProfilesWithWorkers();
+    //   });
+    // });
 
   }
 

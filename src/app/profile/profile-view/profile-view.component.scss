@@ -1,0 +1,34 @@
+#profile-container {
+
+    #avatar-container{
+
+        img{
+            max-width: 200px;
+            max-height: 200px;
+            float: left;
+            margin-right: 30px;            
+        }
+    }
+
+    #information-container{
+
+        &{
+            float:left;
+        }
+
+        .basic-text{
+            font-weight: 300;
+        }
+
+    }
+}
+
+#profile-not-found-message{
+
+    text-align: center;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 300;
+    padding-top: 30px;
+
+}

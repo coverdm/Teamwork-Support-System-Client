@@ -1,3 +1,41 @@
-<p>
-  profile-view works!
-</p>
+<section *ngIf="profile" id="profile-container">
+
+  <div class="col s12 m4 l4" id="avatar-container">
+
+    <img class="circle z-depth-2" src="../../../assets/avatar6.jpg" alt="avatar" />
+
+  </div>
+
+  <div class="col s12 m8 l8" id="information-container">
+
+    <p class="basic-text">Name: {{profile.name.fullName}}</p>
+    <p class="basic-text">Email: {{ profile.profileId.profileId }}</p>
+
+    <div class="role">
+
+      <p class="basic-text">Preffered roles:</p>
+
+      <div class="chip" *ngFor="let position of profile.prefferedRoles">
+        {{position.role}}
+      </div>
+
+    </div>
+
+    <br/>
+
+    <div class="skills">
+
+      <p class="basic-text">Skills:</p>
+
+      <div class="chip" *ngFor="let skill of profile.skills">
+        {{skill.name}}
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<div id="profile-not-found-message" *ngIf="isFailed">
+  {{failed_message}}
+</div>

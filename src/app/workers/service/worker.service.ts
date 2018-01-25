@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Worker } from '@models/worker.model';
-import { Contact } from '@models/contact.model';
+import { Worker } from '../model/worker.model';
 import { Subject } from 'rxjs/Subject';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import {JobOffer} from '@models/jobOffer.model';
+import {JobOffer} from '../model/jobOffer.model';
 
 @Injectable()
 export class WorkerService {

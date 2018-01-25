@@ -1,3 +1,4 @@
+import {WorkerService} from './service/worker.service';
 import { OfferPreparationComponent } from "./offer-preparation/offer-preparation.component";
 import { UserFinderComponent } from "./user-finder/user-finder.component";
 import { NgModule } from "@angular/core";
@@ -6,21 +7,24 @@ import { EmploymentFormComponent } from "./employment-form/employment-form.compo
 import { WorkersListComponent } from "./workers-list/workers-list.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MaterializeModule } from "angular2-materialize/dist/materialize-module";
-import { WorkerService } from "@services/worker.service";
 import { AppRoutingModule } from "../app-routing.module";
+import { ProfileModule } from "app/profile/profile.module";
+import { BasicRolePipe } from './basic-role.pipe';
 
 @NgModule({
   declarations: [
     EmploymentFormComponent,
     OfferPreparationComponent,
     UserFinderComponent,
-    WorkersListComponent
+    WorkersListComponent,
+    BasicRolePipe
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MaterializeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ProfileModule
   ],
   exports: [],
   providers: [WorkerService]

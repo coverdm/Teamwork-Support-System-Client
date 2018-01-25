@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {Http, Headers, Response, RequestOptions} from '@angular/http';
-import { ProjectItem, ProjectProperties } from '@models/project-item.model';
+import { ProjectItem, ProjectProperties } from '../model/project-item.model';
 import 'rxjs/add/operator/do';
 
 @Injectable()

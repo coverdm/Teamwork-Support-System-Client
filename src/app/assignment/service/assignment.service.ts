@@ -1,7 +1,7 @@
+import {Assignment} from '../model/assignment.model';
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Assignment } from '@models/assignment.model';
 
 @Injectable()
 export class AssignmentService {

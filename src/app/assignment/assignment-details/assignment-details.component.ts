@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AssignmentService } from '@services/assignment.service';
+import { AssignmentService } from '../service/assignment.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Assignment } from '@models/assignment.model';
+import { Assignment } from '../model/assignment.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

@@ -1,4 +1,4 @@
-import {AuthService} from './service/auth.service';
+import { AuthService } from './service/auth.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';

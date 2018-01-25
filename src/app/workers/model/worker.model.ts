@@ -1,6 +1,4 @@
-import { Contact } from '@models/contact.model.ts';
-import { Name } from '@models/profile.model';
-
+import {Name} from '../../profile/model/name.model';
 export class Worker {
 
     workerId: WorkerId;

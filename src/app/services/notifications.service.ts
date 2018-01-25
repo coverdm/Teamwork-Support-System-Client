@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Notification } from '@models/notification.model.ts';
 import { Observable } from 'rxjs/Observable';
 import { Http, RequestOptions, Response, Headers } from '@angular/http';
 
 @Injectable()
 export class NotificationsService {
 
-  notifications: Notification[] = [
+  notifications: any = [
     {type: 'new_user', link: '/profile="dawid_matuszak@outlook.com', text: 'mateusz_stanek@gmail.com joined to team'},
     {type: 'meeting', link: '/meetings=32', text: 'Meeting at 3.45 PM'},
     {type: 'task_problem', link: '/taskRoom=asdas', text: 'dawid_matuszak@outlook.com alerts problem with task'},

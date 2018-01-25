@@ -1,48 +1,46 @@
+import {Profile} from '../../profile/model/profile.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Profile } from '@models/profile.model';
-import { ProfileService } from '@services/profile.service';
 import { Router } from '@angular/router';
+import { ProfileViewComponent } from '../../profile/profile-view/profile-view.component';
 
 @Component({
   selector: 'app-user-finder',
   templateUrl: './user-finder.component.html',
-  styleUrls: ['./user-finder.component.scss'],
-  providers: [ProfileService]
+  styleUrls: ['./user-finder.component.scss']
 })
 export class UserFinderComponent implements OnInit {
 
-  newWorkerForm: FormGroup;
+  title: string = '#UserFinder';
+  userId: string;
+
+  enablePreparingOffer: boolean;
+
+  userFinderForm: FormGroup;
   foundUser: boolean;
   loadedProfile: Profile;
 
   constructor(private formBuilder: FormBuilder,
-              private profileService: ProfileService,
               private router: Router) { }
 
   ngOnInit() {
 
-    this.newWorkerForm = this.formBuilder.group({
-      email: ['', Validators.required]
+    this.userFinderForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
     });
     this.foundUser = false;
-    this.onChange();
   }
 
-  onChange() {
-    this.newWorkerForm.valueChanges.subscribe(val => {
-      if (val.email.length > 5)  {
-        this.profileService.find(val.email).subscribe(profile => {
-          this.loadedProfile = profile;
-          this.foundUser = true;
-        }, error => { this.foundUser = false; });
-      }
-    });
+  loadUser(email){
+    this.userId = email;
+  }
+
+  isFound($event){
+    this.enablePreparingOffer = $event;
   }
 
   prepareJobOffer() {
-    console.log(this.router);
-    this.router.navigate(['app/project/offer-preparation', this.newWorkerForm.controls['email'].value]);
+    this.router.navigate(['app/project/' + localStorage.getItem('uuid') +  '/offer-preparation', this.userFinderForm.controls['email'].value]);
   }
 
 }

@@ -27,7 +27,7 @@ const routes: Routes = [
     { path: '', component: ProjectListComponent },
     { path: 'profile', component: ProfileViewComponent },
     { path: 'create-project', component: ProjectCreatorComponent },
-    { path: 'project', component: SideNavComponent,
+    { path: 'project/:uuid', component: SideNavComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       { path: 'dashboard', component: DashboardComponent },

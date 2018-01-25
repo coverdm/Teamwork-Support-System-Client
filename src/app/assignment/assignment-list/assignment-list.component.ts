@@ -1,7 +1,5 @@
+import {Assignment} from '../model/assignment.model';
 import { Component, OnInit } from '@angular/core';
-import { Assignment } from '@models/assignment.model';
-import { Worker } from '@models/worker.model';
-import { Name } from '@models/profile.model';
 
 @Component({
   selector: 'app-assignment-list',

@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
     if (event) this.openDialog = false;
 
     this.dialogProperties.isError ? null : this.router.navigate(['/app']);
-
   }
 
   login(loginModel: LoginModel) {

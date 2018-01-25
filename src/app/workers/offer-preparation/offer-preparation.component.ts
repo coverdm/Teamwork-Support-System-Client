@@ -1,11 +1,11 @@
+import {JobOffer} from '../model/jobOffer.model';
+import {MinProfile} from '../../profile/model/min-profile.model';
+import {WorkerService} from '../service/worker.service';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MaterializeDirective } from 'angular2-materialize';
-import { WorkerService } from '@services/worker.service';
-import { JobOffer } from '@models/jobOffer.model';
 import { ActivatedRoute } from '@angular/router';
-import { ProfileService } from '@services/profile.service';
-import { MinProfile } from '@models/profile.model';
+import { ProfileService } from '../../profile/service/profile.service';
 
 @Component({
   selector: 'app-offer-preparation',
@@ -43,14 +43,11 @@ private profileServices: ProfileService) { }
     });
   }
 
-  sendJobOffer(offer: JobOffer) {
-    offer.userId = this.userId;
-    offer.role = this.position;
-    this.workerService.sendJobOffer(offer).subscribe();
+  sendJobOffer() {
+    this.workerService.sendJobOffer(new JobOffer(this.userId, this.position)).subscribe();
   }
 
   selectPosition(event) {
     this.position = event;
   }
-
 }

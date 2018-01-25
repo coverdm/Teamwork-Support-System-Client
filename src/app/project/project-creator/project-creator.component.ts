@@ -1,46 +1,67 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { MaterializeAction} from 'angular2-materialize';
-import { ProjectProperties } from '@models/project.model.ts';
-import { ProjectService } from '@services/project-list-provider.service';
+import {ProjectProperties} from '../model/project-item.model';
+import { Component, OnInit, EventEmitter } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MaterializeAction } from "angular2-materialize";
+import { ProjectService } from "../service/project.service";
+
+import { DialogComponent } from "../../util/dialog/dialog.component";
+import { DialogProperties } from "../../util/dialog/dialog-properties.model";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-project-creator',
-  templateUrl: './project-creator.component.html',
-  styleUrls: ['./project-creator.component.scss'],
+  selector: "app-project-creator",
+  templateUrl: "./project-creator.component.html",
+  styleUrls: ["./project-creator.component.scss"],
   providers: [ProjectService]
 })
 export class ProjectCreatorComponent implements OnInit {
 
-  problems: boolean;
-  form: FormGroup;
+  title: string = '#ProjectCreator'
 
-  modalActions = new EventEmitter<string | MaterializeAction>();
+  projectCreatorForm: FormGroup;
+  dialogProperties: DialogProperties = new DialogProperties(
+    "Creating project container"
+  );
+  openDialog: boolean;
 
-  constructor(private fb: FormBuilder, private projectService: ProjectService) {
-
-    this.problems = false;
-
-    this.form = fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required]
+  constructor(
+    private formBuilder: FormBuilder,
+    private projectService: ProjectService,
+    private router: Router
+  ) {
+    this.projectCreatorForm = formBuilder.group({
+      name: ["", Validators.required],
+      description: ["", Validators.required]
     });
-
   }
 
-  openModal() {
-    this.modalActions.emit({ action: 'modal', params: ['open'] });
-  }
+  closedDialog(event) {
+    if (event) this.openDialog = false;
 
-  closeModal() {
-    this.modalActions.emit({ action: 'modal', params: ['close'] });
+    this.dialogProperties.isError ? null : this.router.navigate(["/app"]);
   }
 
   createProject(projectProperties: ProjectProperties) {
-      this.projectService.createProject(projectProperties).subscribe(res => console.log);
+
+    this.openDialog = true;
+    this.dialogProperties.showLoader = true;
+
+    this.projectService.createProject(projectProperties).subscribe(
+      response => {
+        this.dialogProperties.message = "Created project successfully";
+        this.dialogProperties.isError = false;
+      },
+      error => {
+        if (error.status === 400) {
+          this.dialogProperties.message = "Problems with creating project";
+          this.dialogProperties.isError = true;
+        }
+      }
+    );
+
+    this.dialogProperties.showLoader = false;
+
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

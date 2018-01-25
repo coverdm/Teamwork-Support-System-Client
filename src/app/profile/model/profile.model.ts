@@ -14,7 +14,7 @@ export class Profile {
     contact: Contact;
     nationality: Nationality;
     prefferedRoles: Array<PrefferedRole>;
-
+    
     constructor(prefferedRoles: Array<PrefferedRole>, name: Name, avatar: Avatar,
         skills: Array<Skill>, contact: Contact, nationality: Nationality, profileId: string) {
         this.name = name;

@@ -12,13 +12,13 @@
 
         <div class="input-field col s12 m6 l6">
           <i class="material-icons prefix">face</i>
-          <input type="text" id="firstName" data-length="120" formControlName="firstName">
+          <input type="text" id="firstName" class="active" data-length="120" formControlName="firstName">
           <label for="firstName">First name</label>
         </div>
 
         <div class="input-field col s12 m6 l6">
           <i class="material-icons prefix">face</i>
-          <input type="text" id="lastName" data-length="120" formControlName="lastName">
+          <input type="text" id="lastName" class="active" data-length="120" formControlName="lastName">
           <label for="lastName">Last name</label>
         </div>
 
@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <button class="btn right" (click)="sendJobOffer(offerForm.value)">Send</button>
+      <button class="btn right" (click)="sendJobOffer()">Send</button>
 
     </form>
 

@@ -1,52 +1,18 @@
 <div class="container">
 
-  <h2>#UserFinder</h2>
+  <header>
+    <h2>#UserFinder</h2>
+  </header>
 
-  <form [formGroup]="newWorkerForm">
+  <form [formGroup]="userFinderForm">
 
     <input type="email" formControlName="email" placeholder="Type person email">
-    <p class="note">##NOTE: Person needs to be registered in application</p>
-
-    <button (click)="prepareJobOffer()" type="submit" class="btn">Prepare offer</button>
+    <p>##NOTE: Person needs to be registered in application</p>
+    <button class="btn" [disabled]="!userFinderForm.valid" (click)="loadUser(userFinderForm.value.email)">Load user</button>
 
   </form>
 
-  <div class="row loaded_user" *ngIf="loadedProfile">
-
-    <div class="col s12 m4 l4">
-
-      <img class="avatar circle z-depth-2" src="{{loadedProfile.avatar.data}}" alt="avatar" />
-
-    </div>
-
-    <div class="col s12 m8 l8">
-
-      <p class="name">Name: {{loadedProfile.name.fullName}}</p>
-      <p class="email">Email: {{loadedProfile.profileId.id}}</p>
-
-      <div class="role">
-
-        <p>Role:</p>
-
-        <div class="chip" *ngFor="let position of loadedProfile.prefferedRoles">
-          {{position.role}}
-        </div>
-
-      </div>
-
-      <br/>
-
-      <div class="skills">
-
-        <p>Skills:</p>
-
-        <div class="chip" *ngFor="let skill of loadedProfile.skills">
-          {{skill.name}}
-        </div>
-
-      </div>
-    </div>
-
-  </div>
+  <app-profile-view (isFound)="isFound($event)" [userId]="userId" [readOnly]="true"></app-profile-view>
+  <button [disabled]="!enablePreparingOffer" (click)="prepareJobOffer()" type="submit" class="btn right">Prepare offer</button>
 
 </div>
